@@ -236,12 +236,12 @@ export default function Personal() {
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
+                className="group -mx-3 rounded-xl px-3 py-3"
                 href={post.link}
                 data-id={post.uid}
               >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
+                <div className="group flex flex-col space-y-1">
+                  <h4 className="group-hover:text-primary-hover font-normal dark:text-zinc-100">
                     {post.title}
                   </h4>
                   <p className="text-zinc-500 dark:text-zinc-400">

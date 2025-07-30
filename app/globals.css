@@ -30,3 +30,35 @@
   --sh-property: #73daca;
   --sh-entity: #e0af68;
 }
+
+@theme inline {
+  --font-sans: var(--font-asap), var(--font-instrument-sans);
+  --font-serif-display: var(--font-instrument-serif);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+@theme static {
+  --color-primary: var(--color-teal-600);
+  --color-primary-hover: var(--color-teal-800);
+}
+
+@theme static .dark {
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+}
+
+@layer base {
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  a:hover {
+    color: var(--color-white);
+    background: var(--color-primary-hover);
+  }
+}
