@@ -14,14 +14,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://simonhlee.com/'),
   alternates: {
-    canonical: '/'
+    canonical: '/',
   },
   title: {
     default: 'Simon H Lee - Personal website',
-    template: '%s | SimonHLee'
+    template: '%s | SimonHLee',
   },
   description: '...',
-};
+}
 
 const geist = Geist({
   variable: '--font-geist',

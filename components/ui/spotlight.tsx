@@ -1,7 +1,7 @@
 'use client'
-import React, { useRef, useState, useCallback, useEffect } from 'react'
-import { motion, useSpring, useTransform, SpringOptions } from 'motion/react'
 import { cn } from '@/lib/utils'
+import { motion, SpringOptions, useSpring, useTransform } from 'motion/react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export type SpotlightProps = {
   className?: string

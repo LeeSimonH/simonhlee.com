@@ -1,24 +1,16 @@
 'use client'
-import { motion } from 'motion/react'
-// import { XIcon } from 'lucide-react'
-import { Spotlight } from '@/components/ui/spotlight'
-import { Magnetic } from '@/components/ui/magnetic'
-// import {
-//   MorphingDialog,
-//   MorphingDialogTrigger,
-//   MorphingDialogContent,
-//   MorphingDialogClose,
-//   MorphingDialogContainer,
-// } from '@/components/ui/morphing-dialog'
-import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { Magnetic } from '@/components/ui/magnetic'
+import { motion } from 'motion/react'
+import Link from 'next/link'
 import {
-  PROJECTS,
-  WORK_EXPERIENCE,
   BLOG_POSTS,
   EMAIL,
+  PROJECTS,
   SOCIAL_LINKS,
+  WORK_EXPERIENCE,
 } from './data'
+import { Spotlight } from '@/components/ui/spotlight'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -38,56 +30,6 @@ const VARIANTS_SECTION = {
 const TRANSITION_SECTION = {
   duration: 0.3,
 }
-
-// type ProjectVideoProps = {
-//   src: string
-// }
-
-// function ProjectVideo({ src }: ProjectVideoProps) {
-//   return (
-//     <MorphingDialog
-//       transition={{
-//         type: 'spring',
-//         bounce: 0,
-//         duration: 0.3,
-//       }}
-//     >
-//       <MorphingDialogTrigger>
-//         <video
-//           src={src}
-//           autoPlay
-//           loop
-//           muted
-//           className="aspect-video w-full cursor-zoom-in rounded-xl"
-//         />
-//       </MorphingDialogTrigger>
-//       <MorphingDialogContainer>
-//         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-//           <video
-//             src={src}
-//             autoPlay
-//             loop
-//             muted
-//             className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-//           />
-//         </MorphingDialogContent>
-//         <MorphingDialogClose
-//           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-//           variants={{
-//             initial: { opacity: 0 },
-//             animate: {
-//               opacity: 1,
-//               transition: { delay: 0.3, duration: 0.1 },
-//             },
-//             exit: { opacity: 0, transition: { duration: 0 } },
-//           }}
-//         >
-//           <XIcon className="h-5 w-5 text-zinc-500" />
-//         </MorphingDialogClose>
-//       </MorphingDialogContainer>
-//     </MorphingDialog>
-//   )
-// }
 
 function MagneticSocialLink({
   children,
@@ -131,52 +73,88 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
+      {/* MARK: About
+       */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
+          <h3 className="mb-5 text-lg font-medium">About</h3>
+
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            <span>I also spend my time</span>
+            <div className="my-2 flex flex-col items-start gap-2">
+              <Link
+                href="https://www.instagram.com/crimpwimp/"
+                target="_blank"
+                className="inline-block"
+              >
+                climbing
+              </Link>
+              <Link
+                href="https://www.instagram.com/nomis_heel/"
+                target="_blank"
+                className="inline-block"
+              >
+                drawing
+              </Link>
+              <Link
+                href="https://www.goodreads.com/user/show/50267865-simon-lee"
+                target="_blank"
+                className="inline-block"
+              >
+                reading
+              </Link>
+              <Link
+                href="https://vsco.co/simonhl/gallery"
+                target="_blank"
+                className="inline-block"
+              >
+                snapping photos
+              </Link>
+            </div>
           </p>
         </div>
       </motion.section>
 
+      {/* MARK: Connect
+       */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="flex flex-col gap-5"
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              {/* <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div> */}
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
-            </div>
+        <h3 className="text-lg font-medium">Connect</h3>
+
+        <div className="flex items-center justify-start space-x-3">
+          {SOCIAL_LINKS.map((link) => (
+            <MagneticSocialLink key={link.label} link={link.link}>
+              {link.label}
+            </MagneticSocialLink>
           ))}
         </div>
+
+        <p className="text-zinc-600 dark:text-zinc-400">
+          Want to work with me? Just chat over coffee? Let's get in touch!
+          <Link
+            className="inline-block font-medium underline"
+            href={`mailto:${EMAIL}`}
+            target="_blank"
+          >
+            {EMAIL}
+          </Link>
+        </p>
       </motion.section>
+
+      {/* MARK: Work Experience
+       */}
 
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <h3 className="mb-5 text-xl font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
@@ -210,11 +188,41 @@ export default function Personal() {
         </div>
       </motion.section>
 
+      {/* MARK: Selected Projects
+       */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {PROJECTS.map((project) => (
+            <div key={project.name} className="space-y-2">
+              <div className="px-1">
+                <a
+                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+                  href={project.link}
+                  target="_blank"
+                >
+                  {project.name}
+                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
+                </a>
+                <p className="text-base text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* MARK: Blog
+       */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-4 text-lg font-medium">Blog</h3>
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover
@@ -243,26 +251,6 @@ export default function Personal() {
               </Link>
             ))}
           </AnimatedBackground>
-        </div>
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
         </div>
       </motion.section>
     </motion.main>
