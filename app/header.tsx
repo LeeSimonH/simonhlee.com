@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { TextEffect } from '@/components/ui/text-effect'
 import Link from 'next/link'
+import ThemeSwitch from '@/components/theme-switch'
 
 export function Header() {
   return (
@@ -44,6 +45,9 @@ export function Header() {
           Software Engineer
         </TextEffect>
       </motion.div>
+      <div className="self-start text-xs text-zinc-400">
+        <ThemeSwitch />
+      </div>
     </header>
   )
 }
