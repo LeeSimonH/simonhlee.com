@@ -1,13 +1,19 @@
 'use client'
 
-import { motion } from 'motion/react'
+import ThemeSwitch from '@/components/theme-switch'
 import { TextEffect } from '@/components/ui/text-effect'
-import Link from 'next/link'
+import { TextLoop } from '@/components/ui/text-loop'
+import { motion } from 'motion/react'
 
 export function Header() {
   return (
-    <header className="mb-8 flex items-center justify-between">
+    <header className="text-body-primary relative top-0 right-0 left-0 flex w-full font-sans">
+      <span className="absolute top-0 right-0 z-50">
+        <ThemeSwitch />
+      </span>
+
       <motion.div
+        className="flex flex-col"
         variants={{
           hidden: { opacity: 0 },
           visible: {
@@ -19,30 +25,30 @@ export function Header() {
         }}
       >
         <TextEffect
-          as="p"
-          preset="fade"
+          as="span"
+          preset="slide"
           per="char"
-          className="font-serif-display text-xl font-semibold tracking-normal text-zinc-600 dark:text-zinc-400"
-          delay={0.5}
+          className="mb-2 inline max-w-fit leading-none tracking-tighter"
+          delay={0.2}
         >
-          Hi there! I'm
+          Hey there! I'm
         </TextEffect>
 
-        <Link
-          href="/"
-          className="font-serif-display text-primary text-5xl font-black tracking-normal hover:text-white"
-        >
-          Simon H Lee
-        </Link>
-        <TextEffect
-          as="p"
-          preset="fade"
-          per="char"
-          className="font-mono text-lg tracking-tight text-zinc-600 dark:text-zinc-500"
-          delay={0.5}
-        >
-          Software Engineer
-        </TextEffect>
+        <TextLoop className="transition-all" interval={5}>
+          {['Simon', '@nomisheel', '@crimpwimp', '/in/simonhlee', 'github/LeeSimonH'].map((nn) => (
+            <TextEffect
+              as="code"
+              preset="fade-in-blur"
+              per="char"
+              delay={0.3}
+              speedSegment={0.6}
+              className="tracking-tightest font-mono text-3xl leading-none font-bold"
+              key={nn}
+            >
+              {nn}
+            </TextEffect>
+          ))}
+        </TextLoop>
       </motion.div>
     </header>
   )
