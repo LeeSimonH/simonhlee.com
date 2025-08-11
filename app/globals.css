@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+
+@import 'tailwindcss/theme.css' layer(theme) source(none);
+@import '../lib/styles/theme.css' layer(base);
+
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
 
