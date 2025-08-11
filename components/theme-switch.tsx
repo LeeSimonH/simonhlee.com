@@ -41,11 +41,12 @@ export default function ThemeSwitch() {
       transition={{
         type: 'spring',
         bounce: 0,
-        duration: 0.2,
       }}
       enableHover={false}
       onValueChangeAction={(id) => {
-        setTheme(id as string)
+        if (!!id) {
+          setTheme(id)
+        }
       }}
     >
       {THEMES_OPTIONS.map((t) => {

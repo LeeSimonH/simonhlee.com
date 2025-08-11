@@ -228,10 +228,6 @@ export function TextEffect({
       staggerChildren: customStagger ?? stagger,
       delayChildren: customDelay ?? delay,
       ...containerTransition,
-      exit: {
-        staggerChildren: customStagger ?? stagger,
-        staggerDirection: -1,
-      },
     }),
     item: createVariantsWithTransition(variants?.item || baseVariants.item, {
       duration: baseDuration,

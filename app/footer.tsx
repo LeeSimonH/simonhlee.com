@@ -18,6 +18,7 @@ export function Footer() {
         <a
           href="https://github.com/leesimonh"
           target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-end gap-0.5"
         >
           <CopyrightIcon size={12} />

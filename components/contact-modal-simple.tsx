@@ -110,7 +110,7 @@ export const SimpleContactModal: React.FC<SimpleContactModalProps> = ({
     phoneNumber: initialData.phoneNumber || '',
     streetAddr: initialData.streetAddr || '',
     city: initialData.city || '',
-    country: initialData.country || 'US',
+    country: initialData.country || 'US_CA',
     region: initialData.region || '',
     zipCode: initialData.zipCode || '',
     notes: initialData.notes || '',
@@ -158,7 +158,7 @@ export const SimpleContactModal: React.FC<SimpleContactModalProps> = ({
       footer={null}
       width={600}
       className="customerModal"
-      destroyOnHidden
+      destroyOnHidden={false}
     >
       <div>
         <h2 className="mb-6 font-serif text-xl leading-7 font-bold tracking-tight text-zinc-600">

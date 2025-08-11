@@ -22,7 +22,7 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
             className="text-body-primary group-data-[orientation=vertical]/timeline:ms-10"
           >
             <TimelineHeader>
-              <TimelineSeparator className="border-1 border-zinc-300 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-[calc(100%-2rem)] group-data-[orientation=vertical]/timeline:translate-y-8 dark:border-zinc-600" />
+              <TimelineSeparator className="border border-zinc-300 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-[calc(100%-2rem)] group-data-[orientation=vertical]/timeline:translate-y-8 dark:border-zinc-600" />
 
               <TimelineTitle className="font-sans text-base">
                 <div>
@@ -74,7 +74,7 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
             {/* MARK: Job Description */}
             <TimelineContent>
               <div className="text-body-secondary flex-col leading-normal tracking-normal">
-                {item.highlights?.length && (
+                {item.highlights?.length > 0 && (
                   <ul className="mt-2 list-none">
                     {item.highlights.map((highlight, idx) => (
                       <li

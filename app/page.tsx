@@ -131,12 +131,22 @@ export default function Personal() {
             <br />
             <br />
             I'm a co-creater of{' '}
-            <a href="https://github.com/oslabs-beta/Svve11" target="_blank" className="link">
+            <a
+              href="https://github.com/oslabs-beta/Svve11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
               svve11
             </a>
             {', '}
             an open-source library of{' '}
-            <a href="http://svelte.dev/" target="_blank">
+            <a
+              href="https://github.com/oslabs-beta/Svve11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
               Svelte
             </a>{' '}
             components focused on web accessibility.
@@ -160,7 +170,11 @@ export default function Personal() {
               <div className="px-3 py-2">
                 {/* <div>climb 🧗🏻‍♂️</div> */}
                 <div>climb</div>
-                <Link href="https://www.instagram.com/crimpwimp/" target="_blank">
+                <Link
+                  href="https://www.instagram.com/crimpwimp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   @crimpwimp
                 </Link>
               </div>
@@ -176,7 +190,11 @@ export default function Personal() {
               <div className="px-3 py-2">
                 {/* <div>draw 🧑🏻‍🎨</div> */}
                 <div>draw</div>
-                <Link href="https://www.instagram.com/nomis_heel/" target="_blank">
+                <Link
+                  href="https://www.instagram.com/nomis_heel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   @nomis_heel
                 </Link>
               </div>
@@ -187,7 +205,11 @@ export default function Personal() {
             <div className="px-3 py-2">
               {/* <div>snap photos 📸</div> */}
               <div>snap photos</div>
-              <Link href="https://vsco.co/simonhl/gallery" target="_blank">
+              <Link
+                href="https://vsco.co/simonhl/gallery"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 vsco/simonhl
               </Link>
             </div>
@@ -197,7 +219,11 @@ export default function Personal() {
             <div className="px-3 py-2">
               {/* <div>read 📖</div> */}
               <div>read</div>
-              <Link href="https://www.goodreads.com/user/show/50267865-simon-lee" target="_blank">
+              <Link
+                href="https://www.goodreads.com/user/show/50267865-simon-lee"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 goodreads
               </Link>
             </div>
