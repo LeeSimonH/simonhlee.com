@@ -1,5 +1,5 @@
 'use client'
-import { SimpleContactModal, Country } from '@/components/contact-modal-simple'
+import { Country, SimpleContactModal } from '@/components/contact-modal-simple'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
   MorphingDialog,
@@ -35,7 +35,7 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-function SocialMediaVideo(props: { url: string; children }) {
+function SocialMediaVideo(props: { url: string; children: any }) {
   return (
     <MorphingDialog
       transition={{
