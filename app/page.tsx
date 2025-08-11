@@ -1,16 +1,20 @@
 'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
+import { SimpleContactModal, Country } from '@/components/contact-modal-simple'
 import { Magnetic } from '@/components/ui/magnetic'
+import {
+  MorphingDialog,
+  MorphingDialogClose,
+  MorphingDialogContainer,
+  MorphingDialogContent,
+  MorphingDialogTrigger,
+} from '@/components/ui/morphing-dialog'
 import ExperiencesTimeline from '@/components/vertical-timeline'
+import { XIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import {
-  BLOG_POSTS,
-  EMAIL,
-  PROJECTS,
-  SOCIAL_LINKS,
-  WORK_EXPERIENCE,
-} from './data'
+import { useState } from 'react'
+import { InstagramEmbed } from 'react-social-media-embed'
+import { SOCIAL_LINKS, WORK_EXPERIENCE } from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -31,18 +35,46 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-function MagneticSocialLink({
-  children,
-  link,
-}: {
-  children: React.ReactNode
-  link: string
-}) {
+function SocialMediaVideo(props: { url: string; children }) {
+  return (
+    <MorphingDialog
+      transition={{
+        type: 'spring',
+        bounce: 0,
+        duration: 0.3,
+      }}
+    >
+      <MorphingDialogTrigger>{props.children}</MorphingDialogTrigger>
+      <MorphingDialogContainer>
+        <MorphingDialogContent className="relative aspect-auto rounded-2xl bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-black dark:ring-zinc-800/50">
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <InstagramEmbed url={props.url} width={328} />
+          </div>
+        </MorphingDialogContent>
+        <MorphingDialogClose
+          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+          variants={{
+            initial: { opacity: 0 },
+            animate: {
+              opacity: 1,
+              transition: { delay: 0.3, duration: 0.1 },
+            },
+            exit: { opacity: 0, transition: { duration: 0 } },
+          }}
+        >
+          <XIcon className="h-5 w-5 text-zinc-500" />
+        </MorphingDialogClose>
+      </MorphingDialogContainer>
+    </MorphingDialog>
+  )
+}
+
+function MagneticSocialLink({ children, link }: { children: React.ReactNode; link: string }) {
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className="link group hover:bg-link-hover-bg bg-muted text-primary dark:text-muted relative inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-0.5 font-mono text-xs transition-colors duration-200 hover:font-bold"
       >
         {children}
         <svg
@@ -66,162 +98,195 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  function onContactFormClose() {
+    console.log('Modal closed')
+    setIsModalOpen(false)
+  }
+
+  function onContactFormSave(data: any) {
+    console.log('Contact saved:', data)
+  }
+
   return (
     <motion.main
-      className="space-y-24"
+      className="my-8 flex max-w-full flex-col gap-24"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
-      {/* MARK: About
-       */}
+      {/* MARK: About + Interests/Hobbies */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="flex-1 space-y-8"
       >
-        <div className="flex-1">
-          <h3 className="mb-5 text-lg font-medium">About</h3>
+        <h2 className="font-heading mb-4 text-lg">About</h2>
+        <div className="text-body-secondary flex-1 space-y-2">
+          <p className="text-pretty">
+            Although I consider myself a{' '}
+            <code className="font-mono font-bold tracking-tighter">software engineer</code>,<br />
+            the reality is that I just like creating things and solving problems.
+            <br />
+            <br />
+            I'm a co-creater of{' '}
+            <a href="https://github.com/oslabs-beta/Svve11" target="_blank" className="link">
+              svve11
+            </a>
+            {', '}
+            an open-source library of{' '}
+            <a href="http://svelte.dev/" target="_blank">
+              Svelte
+            </a>{' '}
+            components focused on web accessibility.
+            <br />
+            <br />
+            In my spare time, I climb.
+            <br />
+            <small className="text-body-muted italic">
+              I do other things too... (when I'm too tired to climb)
+            </small>
+          </p>
+        </div>
 
-          <p className="text-zinc-600 dark:text-zinc-400">
-            <span>I also spend my time</span>
-            <div className="my-2 flex flex-col items-start gap-2">
-              <Link
-                href="https://www.instagram.com/crimpwimp/"
-                target="_blank"
-                className="inline-block"
-              >
-                🧗🏻‍♂️ climbing
-              </Link>
-              <Link
-                href="https://www.instagram.com/nomis_heel/"
-                target="_blank"
-                className="inline-block"
-              >
-                🧑🏻‍🎨 drawing
-              </Link>
-              <Link
-                href="https://www.goodreads.com/user/show/50267865-simon-lee"
-                target="_blank"
-                className="inline-block"
-              >
-                📖 reading
-              </Link>
-              <Link
-                href="https://vsco.co/simonhl/gallery"
-                target="_blank"
-                className="inline-block"
-              >
-                📸 snapping photos
+        <div className="text-secondary flex flex-wrap gap-4 font-mono text-sm">
+          <div className="rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-900/40 dark:ring-zinc-800/50">
+            <SocialMediaVideo
+              url={
+                'https://www.instagram.com/reel/DG9IfwwSSVz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
+              }
+            >
+              <div className="px-3 py-2">
+                {/* <div>climb 🧗🏻‍♂️</div> */}
+                <div>climb</div>
+                <Link href="https://www.instagram.com/crimpwimp/" target="_blank">
+                  @crimpwimp
+                </Link>
+              </div>
+            </SocialMediaVideo>
+          </div>
+
+          <div className="rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-900/40 dark:ring-zinc-800/50">
+            <SocialMediaVideo
+              url={
+                'https://www.instagram.com/p/CoJZDoEuiPs/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
+              }
+            >
+              <div className="px-3 py-2">
+                {/* <div>draw 🧑🏻‍🎨</div> */}
+                <div>draw</div>
+                <Link href="https://www.instagram.com/nomis_heel/" target="_blank">
+                  @nomis_heel
+                </Link>
+              </div>
+            </SocialMediaVideo>
+          </div>
+
+          <div className="rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-900/40 dark:ring-zinc-800/50">
+            <div className="px-3 py-2">
+              {/* <div>snap photos 📸</div> */}
+              <div>snap photos</div>
+              <Link href="https://vsco.co/simonhl/gallery" target="_blank">
+                vsco/simonhl
               </Link>
             </div>
-          </p>
+          </div>
+
+          <div className="rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-900/40 dark:ring-zinc-800/50">
+            <div className="px-3 py-2">
+              {/* <div>read 📖</div> */}
+              <div>read</div>
+              <Link href="https://www.goodreads.com/user/show/50267865-simon-lee" target="_blank">
+                goodreads
+              </Link>
+            </div>
+          </div>
         </div>
       </motion.section>
 
-      {/* MARK: Connect
-       */}
+      {/* MARK: Work Experience */}
+      <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
+        <h2 className="font-heading mb-4 text-lg">Work Experience</h2>
+        <ExperiencesTimeline experiences={WORK_EXPERIENCE} />
+      </motion.section>
+
+      {/* TODO: Selected Projects */}
+
+      {/* TODO: Blog */}
+
+      {/* MARK: Connect */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
         className="flex flex-col gap-5"
       >
-        <h3 className="text-lg font-medium">Connect</h3>
+        <h2 className="font-heading text-lg">Connect</h2>
 
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-
-        <p className="text-zinc-600 dark:text-zinc-400">
-          Want to work with me? Just chat over coffee? Let's get in touch!
-          <Link
-            className="inline-block font-medium underline"
-            href={`mailto:${EMAIL}`}
-            target="_blank"
-          >
-            {EMAIL}
-          </Link>
-        </p>
-      </motion.section>
-
-      {/* MARK: Work Experience
-       */}
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-xl font-medium">Work Experience</h3>
-        <ExperiencesTimeline experiences={WORK_EXPERIENCE} />
-      </motion.section>
-
-      {/* MARK: Selected Projects
-       */}
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
+        <div className="contact-content">
+          <div className="contact-info flex flex-col gap-4">
+            <div className="text-secondary space-y-1 text-pretty">
+              <p>
+                Want to work with me? Have any questions for me? Just want to chat over coffee? Get
+                in touch!
+              </p>
             </div>
-          ))}
-        </div>
-      </motion.section>
 
-      {/* MARK: Blog
-       */}
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-4 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="group -mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
+            {/* Link-styled Button to open Contact Form */}
+            <button
+              type="button"
+              className="group btn-link relative inline-flex max-w-fit items-center gap-1 font-mono"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Contact me
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-3 w-3"
               >
-                <div className="group flex flex-col space-y-1">
-                  <h4 className="group-hover:text-primary-hover font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
+                <path
+                  d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              <span className="absolute bottom-0.5 left-0 block h-0.5 w-full max-w-0 bg-[currentColor] transition-all duration-200 group-hover:max-w-full"></span>
+            </button>
+
+            <h3 className="font-heading sr-only hidden" aria-hidden="true" aria-label="socials">
+              Socials
+            </h3>
+            {/* Github, LinkedIn, Instagram links/pills */}
+            <div className="flex items-center justify-start space-x-4">
+              {SOCIAL_LINKS.map((link) => (
+                <MagneticSocialLink key={link.label} link={link.link}>
+                  {link.label}
+                </MagneticSocialLink>
+              ))}
+            </div>
+          </div>
         </div>
+
+        <SimpleContactModal
+          isOpen={isModalOpen}
+          onClose={() => onContactFormClose()}
+          onSave={(data: any) => onContactFormSave(data)}
+          initialData={{
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            streetAddr: '',
+            city: '',
+            region: '',
+            country: Country.US_CA,
+            zipCode: '',
+            notes: '',
+          }}
+        />
       </motion.section>
     </motion.main>
   )
