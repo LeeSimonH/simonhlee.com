@@ -1,24 +1,24 @@
 'use client'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 const THEMES_OPTIONS = [
   {
+    label: 'System',
+    id: 'system',
+    icon: <MonitorIcon className="h-3.5 w-3.5" />,
+  },
+  {
     label: 'Light',
     id: 'light',
-    icon: <SunIcon className="h-4 w-4" />,
+    icon: <SunIcon className="h-3.5 w-3.5" />,
   },
   {
     label: 'Dark',
     id: 'dark',
-    icon: <MoonIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
+    icon: <MoonIcon className="h-3.5 w-3.5" />,
   },
 ]
 
@@ -36,7 +36,7 @@ export default function ThemeSwitch() {
 
   return (
     <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+      className="group z-auto rounded-lg"
       defaultValue={theme}
       transition={{
         type: 'spring',
@@ -48,16 +48,16 @@ export default function ThemeSwitch() {
         setTheme(id as string)
       }}
     >
-      {THEMES_OPTIONS.map((theme) => {
+      {THEMES_OPTIONS.map((t) => {
         return (
           <button
-            key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+            key={t.id}
+            className={`hover:text-accent dark:data-[checked=true]:text-accent inline-flex cursor-pointer items-center justify-center p-1 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-body-primary' : 'text-body-muted'}`}
             type="button"
-            aria-label={`Switch to ${theme.label} theme`}
-            data-id={theme.id}
+            aria-label={`Switch to ${t.label} theme`}
+            data-id={t.id}
           >
-            {theme.icon}
+            {t.icon}
           </button>
         )
       })}

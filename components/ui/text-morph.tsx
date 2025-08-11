@@ -31,12 +31,7 @@ export function TextMorph({
 
       return {
         id: `${uniqueId}-${lowerChar}${charCounts[lowerChar]}`,
-        label:
-          char === ' '
-            ? '\u00A0'
-            : index === 0
-              ? char.toUpperCase()
-              : lowerChar,
+        label: char === ' ' ? '\u00A0' : index === 0 ? char.toUpperCase() : lowerChar,
       }
     })
   }, [children, uniqueId])
