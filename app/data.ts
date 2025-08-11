@@ -5,7 +5,6 @@ export type WorkExperience = {
   end: string
   link: string
   id: string
-  summary?: string
   highlights?: string[]
 }
 
@@ -59,8 +58,9 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Nov 2017',
     end: 'Jul 2021',
     link: 'https://walkermacy.com/',
-    summary:
+    highlights: [
       'Collaborated frequently within multidisciplinary teams of engineers, architects, and nontechnical stakeholders, often bridging across technical gaps to ensure alignment, and translate high-level concepts into construction-ready specifications for design solutions in a fast-paced, deadline-driven environment',
+    ],
     id: 'work-2',
   },
 ]
@@ -68,8 +68,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'How to Export Metadata from MDX for Next.js SEO',
-    description:
-      'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
+    description: 'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
     link: '/blog/example-mdx-metadata',
     uid: 'blog-1',
   },
