@@ -13,15 +13,15 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://simonhlee.com/'),
+  metadataBase: new URL('https://simonhlee.vercel.app'),
   alternates: {
     canonical: '/',
   },
   title: {
-    default: 'Simon H Lee - Personal website',
-    template: '%s | SimonHLee',
+    default: 'Simon H Lee',
+    template: '%s | Simon L',
   },
-  description: '...',
+  description: 'My personal website, portfolio, and digital space',
 }
 
 //#region MARK: Fonts
@@ -60,14 +60,14 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="flex min-h-screen w-full flex-col items-center">
+          <main className="flex min-h-screen w-full flex-col items-center">
             <div className="relative mx-auto w-full max-w-screen-sm px-8 pt-12 font-sans">
               <Header />
               {children}
-              <Analytics />
               <Footer />
+              <Analytics />
             </div>
-          </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>

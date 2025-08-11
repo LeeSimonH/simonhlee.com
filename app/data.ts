@@ -17,13 +17,6 @@ type Project = {
   id: string
 }
 
-type BlogPost = {
-  title: string
-  description: string
-  link: string
-  uid: string
-}
-
 type SocialLink = {
   label: string
   link: string
@@ -39,6 +32,7 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+// Todo: get from Github gist?
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Janus Health',
@@ -65,15 +59,6 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    title: 'My First Post',
-    description: 'My first file made with mdx',
-    link: '/blog/001',
-    uid: 'blog-001',
-  },
-]
-
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
@@ -90,3 +75,22 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const EMAIL = 'simonlee1125@gmail.com'
+
+//#region MARK: Blog-related
+type BlogPost = {
+  title: string
+  description: string
+  link: string
+  uid: string
+}
+
+// Todo: figure out how to generate this by using the metadata exported from each `.mdx` file
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    title: 'My First Post',
+    description: 'My first file made with mdx',
+    link: '/blog/001',
+    uid: 'blog-001',
+  },
+]
+//#endregion Blog-related
