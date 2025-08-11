@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -63,6 +64,7 @@ export default function RootLayout({
             <div className="relative mx-auto w-full max-w-screen-sm px-8 pt-12 font-sans">
               <Header />
               {children}
+              <Analytics />
               <Footer />
             </div>
           </div>
