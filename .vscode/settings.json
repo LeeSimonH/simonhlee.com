@@ -1,4 +1,7 @@
 {
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -8,12 +11,7 @@
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
   },
-  "tailwindCSS.files.exclude": [
-    "**/.git/**",
-    "**/node_modules/**",
-    "**/.hg/**",
-    "**/.svn/**"
-  ],
+  "tailwindCSS.files.exclude": ["**/.git/**", "**/node_modules/**", "**/.hg/**", "**/.svn/**"],
   "tailwindCSS.classAttributes": [
     "class",
     "className",
@@ -22,5 +20,6 @@
   ],
   "tailwindCSS.classFunctions": ["tw", "clsx", "tw\\.[a-z-]+"],
   "tailwindCSS.experimental.configFile": "app/globals.css",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "markdown.validate.enabled": true
 }
