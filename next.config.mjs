@@ -4,11 +4,11 @@ import createMDX from '@next/mdx'
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  turbopack: {},
+  turbopack: {}
 }
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
+  extension: /\.mdx?$/
 })
 
 export default withMDX(nextConfig)
