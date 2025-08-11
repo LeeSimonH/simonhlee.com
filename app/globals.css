@@ -35,34 +35,76 @@
   --sh-entity: #e0af68;
 }
 
-@theme inline {
-  --font-sans: var(--font-asap), var(--font-instrument-sans);
-  --font-serif-display: var(--font-instrument-serif);
-  --font-mono: var(--font-ibm-plex-mono);
-}
+@theme inline @layer utilities {
+  /* Default Fonts */
+  --font-sans: var(--font-geist), var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
 
-@theme static {
-  --color-primary: var(--color-teal-600);
-  --color-primary-hover: var(--color-teal-800);
-}
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-@theme static .dark {
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
+  /* Specialized Fonts */
+  --font-heading: var(--font-geist);
+
+  /*#region MARK: Custom Colors */
+  --color-lilac: oklch(0.785 0.098 294.3);
+  /*#endregion Custom Colors */
 }
 
 @layer base {
+  html,
+  body {
+    --default-font-feature-settings:
+      'calt' 1, 'liga' 1, 'ss20' 1, 'cv01' 1, 'cv03' 1, 'cv08' 1, 'cv10' 1, 'cv11' 1, 'cv12' 1,
+      'cv14' 1, 'cv16' 1, 'cv19' 0, 'cv20' 1, 'zero' 1;
+  }
+
+  /* Header fonts */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+
   ::selection {
+    color: var(--color-background);
     background: var(--color-primary);
-    color: var(--color-white);
   }
 
-  a {
-    color: var(--color-primary);
+  code,
+  kbd,
+  samp,
+  pre {
+    @apply font-mono;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    @apply text-primary font-heading leading-tighter font-semibold tracking-tighter;
   }
 
-  a:hover {
-    color: var(--color-white);
-    background: var(--color-primary-hover);
+  .bg-muted {
+    background-color: color-mix(in srgb, var(--color-zinc-100) 75%, var(--color-zinc-200) 25%);
+    @variant dark {
+      background-color: color-mix(in srgb, var(--color-zinc-900) 80%, transparent 20%);
+    }
+  }
+}
+
+@layer utilities {
+  :is(a, .link) {
+    @apply text-link cursor-pointer font-medium transition-colors duration-200;
+
+    &:hover {
+      @apply text-link-hover-fg bg-link-hover-bg;
+    }
+  }
+
+  .btn-link {
+    @apply text-link cursor-pointer font-medium transition-colors duration-200;
+
+    &:hover {
+      @apply text-link-hover-bg;
+    }
   }
 }
