@@ -1,0 +1,8 @@
+*.mdx
+
+node_modules
+.next
+_sl-temp
+.specstory
+.cursor
+.vscode
