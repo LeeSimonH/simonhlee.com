@@ -74,7 +74,7 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
             {/* MARK: Job Description */}
             <TimelineContent>
               <div className="text-body-secondary flex-col leading-normal tracking-normal">
-                {item.highlights?.length > 0 && (
+                {item.highlights && item.highlights.length > 0 && (
                   <ul className="mt-2 list-none">
                     {item.highlights.map((highlight, idx) => (
                       <li

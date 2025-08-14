@@ -2,7 +2,6 @@
 
 import ThemeSwitch from '@/components/theme-switch'
 import { TextEffect } from '@/components/ui/text-effect'
-import { TextLoop } from '@/components/ui/text-loop'
 import { motion } from 'motion/react'
 
 export function Header() {
@@ -34,21 +33,16 @@ export function Header() {
           Hey there! I'm
         </TextEffect>
 
-        <TextLoop className="transition-all" interval={5}>
-          {['Simon', '@nomisheel', '@crimpwimp', '/in/simonhlee', 'github/LeeSimonH'].map((nn) => (
-            <TextEffect
-              as="code"
-              preset="fade-in-blur"
-              per="char"
-              delay={0.3}
-              speedSegment={0.6}
-              className="tracking-tightest font-mono text-3xl leading-none font-bold"
-              key={nn}
-            >
-              {nn}
-            </TextEffect>
-          ))}
-        </TextLoop>
+        <TextEffect
+          as="code"
+          preset="fade-in-blur"
+          per="char"
+          delay={0.3}
+          className="tracking-tightest font-mono text-3xl leading-none font-bold"
+          speedSegment={0.6}
+        >
+          Simon
+        </TextEffect>
       </motion.div>
     </header>
   )

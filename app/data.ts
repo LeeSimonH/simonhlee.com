@@ -17,13 +17,6 @@ type Project = {
   id: string
 }
 
-type BlogPost = {
-  title: string
-  description: string
-  link: string
-  uid: string
-}
-
 type SocialLink = {
   label: string
   link: string
@@ -39,6 +32,7 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+// Todo: get from Github gist?
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Janus Health',
@@ -65,15 +59,6 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    title: 'How to Export Metadata from MDX for Next.js SEO',
-    description: 'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
-    link: '/blog/example-mdx-metadata',
-    uid: 'blog-1',
-  },
-]
-
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
@@ -90,3 +75,29 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const EMAIL = 'simonlee1125@gmail.com'
+export const BASE_URL = 'https://simonhlee.vercel.app'
+
+//#region MARK: Blog-related
+type BlogPost = {
+  title: string
+  description: string
+  link: string
+  uid: string
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    title: 'My First Post',
+    description: 'My first file made with mdx',
+    link: '/blog/001',
+    uid: 'blog-001',
+  },
+  {
+    title: 'My Second Test',
+    description:
+      'Test MDX blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nostrum repellat adipisci earum pariatur assumenda dolorum ipsum illo aliquam deserunt quam esse cumque quo quos veniam sed magnam voluptatum mollitia at possimus, architecto sit consectetur distinctio!',
+    link: '/blog/test_ruut',
+    uid: 'blog-002',
+  },
+]
+//#endregion Blog-related
