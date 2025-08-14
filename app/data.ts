@@ -75,6 +75,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const EMAIL = 'simonlee1125@gmail.com'
+export const BASE_URL = 'https://simonhlee.vercel.app'
 
 //#region MARK: Blog-related
 type BlogPost = {
@@ -84,13 +85,19 @@ type BlogPost = {
   uid: string
 }
 
-// Todo: figure out how to generate this by using the metadata exported from each `.mdx` file
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'My First Post',
     description: 'My first file made with mdx',
     link: '/blog/001',
     uid: 'blog-001',
+  },
+  {
+    title: 'My Second Test',
+    description:
+      'Test MDX blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nostrum repellat adipisci earum pariatur assumenda dolorum ipsum illo aliquam deserunt quam esse cumque quo quos veniam sed magnam voluptatum mollitia at possimus, architecto sit consectetur distinctio!',
+    link: '/blog/test_ruut',
+    uid: 'blog-002',
   },
 ]
 //#endregion Blog-related

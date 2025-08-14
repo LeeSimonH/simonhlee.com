@@ -28,11 +28,6 @@ export function ScrollProgress({ className, springOptions, containerRef }: Scrol
   })
 
   return (
-    <motion.div
-      className={cn('inset-x-0 top-0 h-1 origin-left', className)}
-      style={{
-        scaleX,
-      }}
-    />
+    <motion.div className={cn('inset-x-0 top-0 h-1 origin-left', className)} style={{ scaleX }} />
   )
 }
