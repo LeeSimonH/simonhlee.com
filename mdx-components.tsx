@@ -1,3 +1,4 @@
+import type { MDXComponents } from 'mdx/types'
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
@@ -44,7 +45,7 @@ const components = {
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
-      'text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800'
+      'text-blue-500 hover:text-blue-700 dark:text-gray-400 dark:hover:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800'
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
@@ -90,16 +91,15 @@ const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
+      className="ml-[0.075em] border-l border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
       {...props}
     />
   ),
 }
 
-declare global {
-  type MDXProvidedComponents = typeof components
-}
-
-export function useMDXComponents(): MDXProvidedComponents {
-  return components
+export function useMDXComponents(existing: MDXComponents): MDXComponents {
+  return {
+    ...existing,
+    ...components,
+  }
 }
