@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 // import { InstagramEmbed } from 'react-social-media-embed'
 import { BLOG_POSTS as FALLBACK_BLOG_POSTS, SOCIAL_LINKS, WORK_EXPERIENCE } from './data'
-import { ContactFormInline } from '@/components/contact-form-inline'
+// import { ContactFormInline } from '@/components/contact-form-inline'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -370,7 +370,7 @@ export default function Personal() {
           </div>
         </div>
 
-        <ContactFormInline />
+        {/* <ContactFormInline /> */}
 
         {/* <SimpleContactModal
           isOpen={isModalOpen}
