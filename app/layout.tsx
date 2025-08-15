@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
+    template: '%s | SimonHLee',
     default: 'Simon H Lee',
-    template: '%s | Simon L',
   },
   description: 'My personal website, portfolio, and digital space',
 }
@@ -40,7 +40,6 @@ const geistMono = Geist_Mono({
 const geist = Geist({
   variable: '--font-geist',
   subsets: ['latin'],
-  display: 'swap',
 })
 //#endregion Fonts
 
@@ -59,6 +58,7 @@ export default function RootLayout({
           attribute="class"
           storageKey="theme"
           defaultTheme="system"
+          disableTransitionOnChange={true}
         >
           <main className="flex min-h-screen w-full flex-col items-center">
             <div className="relative mx-auto w-full max-w-screen-sm px-8 pt-12 font-sans">

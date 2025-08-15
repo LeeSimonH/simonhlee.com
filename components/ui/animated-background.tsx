@@ -19,7 +19,7 @@ export function AnimatedBackground({
   onValueChangeAction,
   className,
   transition,
-  enableHover = false,
+  enableHover = true,
 }: AnimatedBackgroundProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const uniqueId = useId()

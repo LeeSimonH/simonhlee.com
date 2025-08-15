@@ -3,6 +3,8 @@
 @import 'tailwindcss/theme.css' layer(theme) source(none);
 @import '../lib/styles/theme.css' layer(base);
 
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
 
@@ -37,10 +39,8 @@
 
 @theme inline @layer utilities {
   /* Default Fonts */
-  --font-sans: var(--font-geist), var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
-
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
   /* Specialized Fonts */
   --font-heading: var(--font-geist);
 
@@ -49,7 +49,35 @@
   /*#endregion Custom Colors */
 }
 
+@layer utilities {
+  .magic-pattern-wavy {
+    /* background-color:; */
+    opacity: 0.1;
+    background-image:
+      repeating-radial-gradient(circle at 0 0, transparent 0, var(--color-background) 8px),
+      repeating-linear-gradient(var(--color-muted), var(--color-muted));
+  }
+
+  .magic-pattern-circles {
+    background-color: #d9dee5;
+    opacity: 0.1;
+    background-image:
+      radial-gradient(circle at center center, var(--color-rose-700), var(--color-rose-100)),
+      repeating-radial-gradient(
+        circle at center center,
+        var(--color-rose-700) var(--color-rose-700) 8px,
+        transparent 16px,
+        transparent 8px
+      );
+    background-blend-mode: multiply;
+  }
+}
+
 @layer base {
+  :root {
+    font-family: var(--font-sans);
+  }
+
   html,
   body {
     --default-font-feature-settings:
@@ -61,7 +89,9 @@
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 
@@ -84,27 +114,25 @@
   }
 
   .bg-muted {
-    background-color: color-mix(in srgb, var(--color-zinc-100) 75%, var(--color-zinc-200) 25%);
+    background-color: color-mix(in srgb, var(--color-zinc-100) 30%, var(--color-zinc-200) 70%);
     @variant dark {
       background-color: color-mix(in srgb, var(--color-zinc-900) 80%, transparent 20%);
     }
   }
-}
 
-@layer utilities {
   :is(a, .link) {
-    @apply text-link cursor-pointer font-medium transition-colors duration-200;
+    @apply text-link cursor-pointer font-medium transition-colors duration-200 ease-in-out;
 
     &:hover {
-      @apply text-link-hover-fg bg-link-hover-bg;
+      @apply text-link-hover;
     }
   }
 
   .btn-link {
-    @apply text-link cursor-pointer font-medium transition-colors duration-200;
+    @apply text-link cursor-pointer font-medium transition-colors duration-200 ease-in-out;
 
     &:hover {
-      @apply text-link-hover-bg;
+      @apply text-link-hover;
     }
   }
 }
