@@ -191,7 +191,7 @@ export default function Personal() {
               // Expanding Corner (experiment)
               <Link
                 key={post.uid}
-                className="group before:bg-primary before bg-background border-faint relative z-0 -mx-4 mb-4 w-full cursor-pointer overflow-hidden rounded-xl border px-4 py-3 before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-out hover:before:scale-[150] hover:before:opacity-100 dark:bg-zinc-800/30"
+                className="group before:bg-primary before bg-background border-faint dark:border-faint relative z-0 -mx-4 mb-4 w-full cursor-pointer overflow-hidden rounded-xl border px-4 py-3 before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-out hover:before:scale-[150] hover:before:opacity-100 dark:bg-zinc-800/30"
                 href={post.link}
                 data-id={post.uid}
               >

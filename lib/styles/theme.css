@@ -38,7 +38,7 @@
 
   --color-body-primary: var(--color-zinc-50);
   --color-body-secondary: var(--color-zinc-300);
-  --color-body-muted: var(--color-zinc-500);
+  --color-body-muted: var(--color-zinc-600);
 
   --color-primary: var(--color-zinc-50);
   --color-primary-hover: var(--color-zinc-200);
@@ -47,7 +47,8 @@
   --color-secondary: var(--color-zinc-300);
   --color-secondary-hover: var(--color-zinc-600);
 
-  --color-muted: var(--color-zinc-700);
+  --color-muted: var(--color-zinc-600);
+  --color-faint: var(--color-zinc-800);
 
   --color-accent: var(--color-zinc-100);
   --color-accent-hover: var(--color-zinc-200);
