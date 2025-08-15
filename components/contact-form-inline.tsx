@@ -48,7 +48,7 @@ function ContactFormInline() {
     //   return
     // }
     // Todo: Handle form submission here
-    console.log('Form submitted:', data)
+    // TODO: handle successful submission without logging sensitive data
     alert('Form submitted')
   }
 
