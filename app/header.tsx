@@ -2,11 +2,12 @@
 
 import ThemeSwitch from '@/components/theme-switch'
 import { TextEffect } from '@/components/ui/text-effect'
+import { TextLoop } from '@/components/ui/text-loop'
 import { motion } from 'motion/react'
 
 export function Header() {
   return (
-    <header className="text-body-primary relative top-0 right-0 left-0 flex w-full">
+    <header className="text-primary relative top-0 right-0 left-0 flex w-full">
       <span className="absolute top-0 right-0 z-50">
         <ThemeSwitch />
       </span>
@@ -24,25 +25,29 @@ export function Header() {
         }}
       >
         <TextEffect
-          as="span"
-          preset="slide"
-          per="char"
-          className="mb-2 inline max-w-fit font-sans leading-none tracking-tighter"
-          delay={0.2}
-        >
-          Hey there! I'm
-        </TextEffect>
-
-        <TextEffect
-          as="code"
+          as="h1"
           preset="fade-in-blur"
           per="char"
-          delay={0.3}
-          className="font-sans text-2xl leading-none font-bold tracking-tighter"
-          speedSegment={0.6}
+          delay={0.2}
+          className="text-2xl leading-none font-bold tracking-tighter"
         >
           Simon H Lee
         </TextEffect>
+
+        <TextLoop interval={3.5} className="leading-loose italic">
+          {['Software Engineer', 'Urbanist', 'Creative'].map((nickname) => (
+            <TextEffect
+              as="span"
+              preset="fade-in-blur"
+              per="char"
+              delay={0.3}
+              speedSegment={0.6}
+              key={nickname}
+            >
+              {nickname}
+            </TextEffect>
+          ))}
+        </TextLoop>
       </motion.div>
     </header>
   )

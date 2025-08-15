@@ -23,7 +23,7 @@
 # misc
 .DS_Store
 *.pem
-.vscode
+.vscode/
 
 # debug
 npm-debug.log*
@@ -39,6 +39,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Warp
+.warp/
 
 # typescript
 *.tsbuildinfo

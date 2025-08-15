@@ -8,17 +8,17 @@ const THEMES_OPTIONS = [
   {
     label: 'System',
     id: 'system',
-    icon: <MonitorIcon className="h-3 w-3" />,
+    icon: <MonitorIcon className="h-3.5 w-3.5" />,
   },
   {
     label: 'Light',
     id: 'light',
-    icon: <SunIcon className="h-3 w-3" />,
+    icon: <SunIcon className="h-3.5 w-3.5" />,
   },
   {
     label: 'Dark',
     id: 'dark',
-    icon: <MoonIcon className="h-3 w-3" />,
+    icon: <MoonIcon className="h-3.5 w-3.5" />,
   },
 ]
 
@@ -53,7 +53,7 @@ export default function ThemeSwitch() {
         return (
           <button
             key={t.id}
-            className={`hover:text-primary-hover dark:data-[checked=true]:text-accent transition-all] inline-flex cursor-pointer items-center justify-center rounded-full p-0.5 duration-300 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-primary border-faint border shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/90 dark:shadow-none' : 'text-muted'}`}
+            className={`hover:text-primary-hover dark:data-[checked=true]:text-accent transition-all] mx-0.5 inline-flex cursor-pointer items-center justify-center rounded-full p-1 duration-300 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-primary' : 'text-muted'}`}
             type="button"
             aria-label={`Switch to ${t.label} theme`}
             data-id={t.id}

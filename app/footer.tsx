@@ -4,26 +4,26 @@ import ThemeSwitch from '@/components/theme-switch'
 
 export function Footer() {
   return (
-    <footer className="text-secondary border-muted border-t px-0 py-8 dark:border-zinc-800">
-      <div className="relative flex min-w-full items-center justify-end gap-6 text-xs tracking-tight">
-        <div className="absolute left-0 text-xs">
+    <footer className="text-muted border-faint border-t px-0 py-8 dark:border-zinc-800">
+      <div className="relative flex min-w-full items-center justify-start gap-6 text-xs tracking-tight">
+        <div className="absolute right-0 text-xs">
           <ThemeSwitch />
-        </div>
-
-        <div className="inline-flex content-center items-center gap-1">
-          <MapPinIcon size={12} />
-          <span>Brooklyn, NY</span>
         </div>
 
         <a
           href="https://github.com/leesimonh"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-end gap-0.5"
+          className="text-secondary flex items-center justify-start gap-1 leading-0 decoration-transparent"
         >
           <CopyrightIcon size={12} />
           2025 Simon H Lee
         </a>
+
+        <div className="flex items-center justify-start gap-1 leading-0 decoration-transparent">
+          <MapPinIcon size={12} />
+          <span>Brooklyn, NY</span>
+        </div>
       </div>
 
       <div className="hidden min-w-full grid-cols-12 place-items-end gap-8 text-xs tracking-tight">

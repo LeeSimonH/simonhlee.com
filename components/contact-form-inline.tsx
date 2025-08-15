@@ -12,6 +12,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { MailIcon } from 'lucide-react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -43,13 +44,22 @@ function ContactFormInline() {
     criteriaMode: 'all',
   })
 
-  const onSubmit: SubmitHandler<ContactForm> = (data) => {
-    // if (!validateForm()) {
-    //   return
-    // }
-    // Todo: Handle form submission here
-    // TODO: handle successful submission without logging sensitive data
-    alert('Form submitted')
+  const onSubmit: SubmitHandler<ContactForm> = async (data) => {
+    // Honeypot field (invisible); bots often fill it
+    const payload = { ...data, company: '' }
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      // Simple UX: reset on success
+      contactForm.reset()
+      alert('Thanks! Your message was sent.')
+    } catch (e) {
+      alert('Sorry, there was a problem sending your message.')
+    }
   }
 
   return (
@@ -193,8 +203,12 @@ function ContactFormInline() {
           )}
         />
 
-        <Button type="submit" className="w-full cursor-pointer">
-          Send message
+        <Button
+          variant={'outline'}
+          type="submit"
+          className="hover:text-on-primary border-muted cursor-pointer"
+        >
+          <MailIcon /> Send message
         </Button>
       </form>
     </Form>

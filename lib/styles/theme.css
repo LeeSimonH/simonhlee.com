@@ -25,7 +25,7 @@
   --color-accent: var(--color-zinc-800);
   --color-accent-hover: var(--color-black);
 
-  --color-link: var(--color-primary);
+  --color-link: var(--color-secondary);
   --color-link-hover: var(--color-primary-hover);
 
   --color-error: var(--color-red-500);
