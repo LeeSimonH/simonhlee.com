@@ -43,19 +43,25 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = useContext(FormFieldContext)
   const itemContext = useContext(FormItemContext)
-  const { getFieldState } = useFormContext()
-  const formState = useFormState({ name: fieldContext.name })
-  const fieldState = getFieldState(fieldContext.name, formState)
+  const generatedId = useId()
 
-  if (!fieldContext) {
-    throw new Error('useFormField should be used within <FormField>')
+  // Validate required field name early for clearer errors and safer boundaries
+  const name = fieldContext?.name as string | undefined
+  if (!name) {
+    throw new Error('useFormField must be used within <FormField> and requires a valid field name.')
   }
 
-  const { id } = itemContext
+  // React Hook Form context is required; if absent, RHF will throw its own descriptive error
+  const { getFieldState } = useFormContext()
+  const formState = useFormState({ name })
+  const fieldState = getFieldState(name, formState)
+
+  // Gracefully handle missing FormItem context by falling back to a stable generated id
+  const id = itemContext?.id ?? generatedId
 
   return {
     id,
-    name: fieldContext.name,
+    name,
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
