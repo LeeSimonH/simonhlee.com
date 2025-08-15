@@ -43,34 +43,6 @@
   --font-mono: var(--font-geist-mono);
   /* Specialized Fonts */
   --font-heading: var(--font-geist);
-
-  /*#region MARK: Custom Colors */
-  --color-lilac: oklch(0.785 0.098 294.3);
-  /*#endregion Custom Colors */
-}
-
-@layer utilities {
-  .magic-pattern-wavy {
-    /* background-color:; */
-    opacity: 0.1;
-    background-image:
-      repeating-radial-gradient(circle at 0 0, transparent 0, var(--color-background) 8px),
-      repeating-linear-gradient(var(--color-muted), var(--color-muted));
-  }
-
-  .magic-pattern-circles {
-    background-color: #d9dee5;
-    opacity: 0.1;
-    background-image:
-      radial-gradient(circle at center center, var(--color-rose-700), var(--color-rose-100)),
-      repeating-radial-gradient(
-        circle at center center,
-        var(--color-rose-700) var(--color-rose-700) 8px,
-        transparent 16px,
-        transparent 8px
-      );
-    background-blend-mode: multiply;
-  }
 }
 
 @layer base {
@@ -120,15 +92,15 @@
     }
   }
 
-  :is(a, .link) {
-    @apply text-link cursor-pointer font-medium transition-colors duration-200 ease-in-out;
+  :where(a, .link) {
+    @apply text-link cursor-pointer underline decoration-zinc-500 underline-offset-2 transition-colors duration-200 ease-in-out;
 
     &:hover {
-      @apply text-link-hover;
+      @apply text-link-hover decoration-link-hover;
     }
   }
 
-  .btn-link {
+  :where(.btn-link) {
     @apply text-link cursor-pointer font-medium transition-colors duration-200 ease-in-out;
 
     &:hover {
