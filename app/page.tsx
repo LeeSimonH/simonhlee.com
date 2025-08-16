@@ -1,5 +1,5 @@
 'use client'
-import { ContactFormInline } from '@/components/contact-form-inline'
+import { ContactDialog } from '@/components/contact-dialog'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
 import ExperiencesTimeline from '@/components/vertical-timeline'
@@ -127,6 +127,48 @@ export default function Personal() {
             </ul>
           </div>
         </div>
+
+        {/* Github, LinkedIn, Instagram links/pills */}
+        <h3 className="font-heading sr-only hidden" aria-hidden="true" aria-label="socials">
+          Socials
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          {SOCIAL_LINKS.map((link) => (
+            <MagneticSocialLink key={link.label} link={link.link}>
+              {link.label}
+            </MagneticSocialLink>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* MARK: Connect */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="grid grid-cols-1 gap-y-8"
+      >
+        <div className="flex flex-col gap-y-4">
+          {/* Invisible anchor to preserve #contact hash navigation */}
+          <span id="contact" className="block h-0 w-0 overflow-hidden" />
+
+          <h2 className="font-heading text-lg">Connect</h2>
+
+          <div className="contact-content">
+            <div className="contact-info flex flex-col gap-4">
+              <div className="text-secondary space-y-1 text-pretty">
+                <p>
+                  Want to work with me? Have any questions for me? Just want to chat over coffee?
+                  Get in touch!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact dialog trigger */}
+          <div>
+            <ContactDialog />
+          </div>
+        </div>
       </motion.section>
 
       {/* MARK: Work Experience */}
@@ -155,7 +197,7 @@ export default function Personal() {
               // Expanding Corner (experiment)
               <Link
                 key={post.uid}
-                className="group before:bg-primary before bg-background border-faint dark:border-faint relative z-0 mb-4 w-full cursor-pointer overflow-hidden rounded-lg border px-4 py-3 decoration-transparent before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-out hover:decoration-transparent hover:before:scale-[150] hover:before:opacity-100 dark:bg-zinc-800/30"
+                className="group before:bg-primary before bg-background border-faint dark:border-faint relative z-0 mb-4 w-full overflow-hidden rounded-lg border px-4 py-3 decoration-transparent before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-out hover:decoration-transparent hover:before:scale-[150] hover:before:opacity-100 dark:bg-zinc-800/30"
                 href={post.link}
                 data-id={post.uid}
               >
@@ -172,42 +214,6 @@ export default function Personal() {
             ))}
           </AnimatedBackground>
         </div>
-      </motion.section>
-
-      {/* MARK: Connect */}
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-        className="grid grid-cols-1 gap-y-8"
-      >
-        <div className="flex flex-col gap-y-4">
-          <h2 className="font-heading text-lg">Connect</h2>
-
-          <div className="contact-content">
-            <div className="contact-info flex flex-col gap-4">
-              <div className="text-secondary space-y-1 text-pretty">
-                <p>
-                  Want to work with me? Have any questions for me? Just want to chat over coffee?
-                  Get in touch!
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Github, LinkedIn, Instagram links/pills */}
-          <h3 className="font-heading sr-only hidden" aria-hidden="true" aria-label="socials">
-            Socials
-          </h3>
-          <div className="flex flex-wrap gap-4">
-            {SOCIAL_LINKS.map((link) => (
-              <MagneticSocialLink key={link.label} link={link.link}>
-                {link.label}
-              </MagneticSocialLink>
-            ))}
-          </div>
-        </div>
-
-        <ContactFormInline />
       </motion.section>
     </motion.main>
   )
