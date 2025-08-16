@@ -53,7 +53,7 @@ export function ContactDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <Button variant="outline" className="border-muted">
+          <Button variant="outline" className="border-muted hover:text-on-primary">
             <MailIcon />
             Leave a message
           </Button>

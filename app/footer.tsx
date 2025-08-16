@@ -5,7 +5,7 @@ import ThemeSwitch from '@/components/theme-switch'
 export function Footer() {
   return (
     <footer className="text-muted border-faint border-t px-0 py-8 dark:border-zinc-800">
-      <div className="relative flex min-w-full items-center justify-start gap-6 text-xs tracking-tight">
+      <div className="relative flex min-w-full items-center justify-start gap-6 text-xs leading-0 tracking-tight">
         <div className="absolute right-0 text-xs">
           <ThemeSwitch />
         </div>
@@ -14,13 +14,13 @@ export function Footer() {
           href="https://github.com/leesimonh"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-secondary flex items-center justify-start gap-1 leading-0 decoration-transparent"
+          className="text-secondary flex items-center justify-start gap-1 decoration-transparent"
         >
           <CopyrightIcon size={12} />
           2025 Simon H Lee
         </a>
 
-        <div className="flex items-center justify-start gap-1 leading-0 decoration-transparent">
+        <div className="flex items-center justify-start gap-1 decoration-transparent">
           <MapPinIcon size={12} />
           <span>Brooklyn, NY</span>
         </div>

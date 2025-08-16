@@ -3,6 +3,7 @@ import { ContactDialog } from '@/components/contact-dialog'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
 import ExperiencesTimeline from '@/components/vertical-timeline'
+import { ExternalLink } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -36,21 +37,7 @@ function MagneticSocialLink({ children, link }: { children: React.ReactNode; lin
       >
         <span className="transition-color text-primary group-hover:text-on-primary dark:group-hover:text-on-primary z-10 inline-flex items-center gap-1 duration-200">
           {children}
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-primary group-hover:text-on-primary dark:group-hover:text-on-primary z-10 transition-colors duration-200"
-          >
-            <path
-              d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-              fill="currentColor"
-              fillRule="evenodd"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <ExternalLink size={10} />
         </span>
       </a>
     </Magnetic>
@@ -94,7 +81,9 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="flex-1 space-y-8"
       >
-        {/* <h2 className="font-heading mb-4 text-lg">About</h2> */}
+        <h2 className="sr-only hidden" aria-hidden="true" aria-label="about">
+          About
+        </h2>
 
         <p>
           Hi there! I'm Simon.
@@ -105,11 +94,16 @@ export default function Personal() {
         </p>
         {/* MARK: Social Chips/Hovers/Cards */}
 
-        <div>
+        <div id="hobbies">
           <span>
             These days I spend most of my free time{' '}
-            <a href="https://instagram.com/crimpwimp" target="_blank" rel="noopener noreferrer">
-              climbing
+            <a
+              href="https://instagram.com/crimpwimp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-baseline gap-0.5"
+            >
+              climbing <ExternalLink size={10} />
             </a>
             ,<br />
             but other things I enjoy include:
@@ -119,7 +113,12 @@ export default function Personal() {
               <li>noodling around on the piano and guitar</li>
               <li>$1 slices</li>
               <li>
-                <a href="https://vsco.co/simonhl/gallery">snapping photos</a>
+                <a
+                  href="https://vsco.co/simonhl/gallery"
+                  className="inline-flex items-baseline gap-0.5"
+                >
+                  snapping photos <ExternalLink size={10} />
+                </a>
               </li>
               <li>
                 <em>Channel Orange</em> by Frank Ocean
@@ -129,7 +128,7 @@ export default function Personal() {
         </div>
 
         {/* Github, LinkedIn, Instagram links/pills */}
-        <h3 className="font-heading sr-only hidden" aria-hidden="true" aria-label="socials">
+        <h3 className="sr-only hidden" aria-hidden="true" aria-label="socials">
           Socials
         </h3>
         <div className="flex flex-wrap gap-4">
@@ -157,8 +156,9 @@ export default function Personal() {
             <div className="contact-info flex flex-col gap-4">
               <div className="text-secondary space-y-1 text-pretty">
                 <p>
-                  Want to work with me? Have any questions for me? Just want to chat over coffee?
-                  Get in touch!
+                  Want to work with me? Have any questions for me?
+                  <br />
+                  Just want to chat over coffee? Get in touch!
                 </p>
               </div>
             </div>

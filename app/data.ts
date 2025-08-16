@@ -87,7 +87,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'Instagram',
-    link: 'https://www.instagram.com/',
+    link: 'https://www.instagram.com/crimpwimp',
   },
 ]
 

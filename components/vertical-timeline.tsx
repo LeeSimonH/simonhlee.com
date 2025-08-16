@@ -9,25 +9,25 @@ import {
   TimelineSeparator,
   TimelineTitle,
 } from '@/components/ui/timeline'
-import { AsteriskIcon } from 'lucide-react'
+import { AsteriskIcon, ExternalLink } from 'lucide-react'
 
 export default function ExperiencesTimeline(props: { experiences: WorkExperience[] }) {
   return (
-    <div className="h-full w-full max-w-[50ch]">
+    <div className="h-full w-full">
       <Timeline defaultValue={props.experiences.length}>
         {props.experiences.map((job, idx) => (
           <TimelineItem
             key={job.id}
             step={idx + 1}
-            className="text-primary group-data-[orientation=vertical]/timeline:ms-10"
+            className={`text-primary max-w-[44ch] group-data-[orientation=vertical]/timeline:ms-10 ${idx === props.experiences.length - 1 ? 'mb-0' : 'mb-8'}`}
           >
             <TimelineHeader>
-              <TimelineSeparator className="border border-zinc-300 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-[calc(100%-2rem)] group-data-[orientation=vertical]/timeline:translate-y-8 dark:border-zinc-600" />
+              <TimelineSeparator className="border border-zinc-300 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-full group-data-[orientation=vertical]/timeline:translate-y-8 dark:border-zinc-600" />
 
               <TimelineTitle>
                 <div className="flex w-full items-baseline justify-between">
                   {/* MARK: Job Title */}
-                  <span className="text-base font-medium">
+                  <span className="text-base leading-relaxed font-medium">
                     {job.title}
                     {job.subtitle && (
                       <span className="text-secondary text-sm font-normal">
@@ -50,24 +50,11 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
                   href={job.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-block hover:bg-transparent"
+                  className="group relative inline-block"
                 >
-                  <span className="group text-secondary hover:text-link-hover relative inline-flex shrink-1 items-center gap-0.5 text-base leading-snug font-normal transition-colors duration-300 ease-in-out">
-                    {job.company}{' '}
-                    <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-                        fill="currentColor"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
+                  <span className="group text-secondary hover:text-link-hover relative inline-flex shrink-1 items-center gap-0.5 text-base leading-tight font-normal transition-colors duration-300 ease-in-out">
+                    {job.company}
+                    <ExternalLink size={10} />
                     <span className="bg-link-hover absolute bottom-0.5 left-0 block h-px w-full max-w-0 transition-all duration-300 group-hover:max-w-full"></span>
                   </span>
                 </a>
@@ -82,11 +69,11 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
             <TimelineContent>
               <div className="text-body-secondary flex-col leading-normal tracking-normal">
                 {job.highlights && job.highlights.length > 0 && (
-                  <ul className="mt-2 list-none">
+                  <ul className="mt-4 list-none">
                     {job.highlights.map((highlight, idx) => (
                       <li
                         key={`${job.id}-highlight-${idx}`}
-                        className="mb-4 font-sans text-sm leading-normal text-pretty"
+                        className="mt-4 font-sans text-sm leading-normal text-pretty"
                       >
                         {highlight}
                       </li>

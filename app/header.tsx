@@ -34,7 +34,7 @@ export function Header() {
           Simon H Lee
         </TextEffect>
 
-        <TextLoop interval={3.5} className="leading-loose italic">
+        <TextLoop interval={3.5} className="leading-loose font-medium">
           {['Software Engineer', 'Urbanist', 'Creative'].map((nickname) => (
             <TextEffect
               as="span"

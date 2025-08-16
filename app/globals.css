@@ -78,6 +78,10 @@
   pre {
     @apply font-mono;
   }
+
+  :where(a, button) {
+    cursor: pointer;
+  }
 }
 
 @layer utilities {
@@ -93,7 +97,7 @@
   }
 
   :where(a, .link) {
-    @apply text-link cursor-pointer underline decoration-zinc-500 underline-offset-2 transition-colors duration-200 ease-in-out;
+    @apply text-link underline decoration-zinc-500 underline-offset-2 transition-colors duration-200 ease-in-out;
 
     &:hover {
       @apply text-link-hover decoration-link-hover;
@@ -101,7 +105,7 @@
   }
 
   :where(.btn-link) {
-    @apply text-link cursor-pointer font-medium transition-colors duration-200 ease-in-out;
+    @apply text-link font-medium transition-colors duration-200 ease-in-out;
 
     &:hover {
       @apply text-link-hover;

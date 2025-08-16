@@ -36,11 +36,12 @@ export default function ThemeSwitch() {
 
   return (
     <AnimatedBackground
-      className="group z-auto rounded-lg"
+      className="group bg-faint/80 dark:bg-faint z-auto rounded-lg"
       defaultValue={theme}
       transition={{
         type: 'spring',
         bounce: 0,
+        duration: 0.3,
       }}
       enableHover={false}
       onValueChangeAction={(id) => {
@@ -53,7 +54,7 @@ export default function ThemeSwitch() {
         return (
           <button
             key={t.id}
-            className={`hover:text-primary-hover dark:data-[checked=true]:text-accent transition-all] mx-0.5 inline-flex cursor-pointer items-center justify-center rounded-full p-1 duration-300 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-primary' : 'text-muted'}`}
+            className={`hover:text-primary-hover dark:data-[checked=true]:text-accent mx-0.5 inline-flex items-center justify-center rounded-full p-1 transition-all duration-300 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-primary' : 'text-muted'}`}
             type="button"
             aria-label={`Switch to ${t.label} theme`}
             data-id={t.id}
