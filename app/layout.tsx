@@ -5,6 +5,7 @@ import { geist, geistMono } from '@/lib/fonts'
 import { Footer } from './footer'
 import './globals.css'
 import { Header } from './header'
+import { WEBSITE_URL } from '@/lib/constants'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -13,7 +14,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://simonhlee.vercel.app'),
+  metadataBase: new URL(WEBSITE_URL),
   alternates: {
     canonical: '/',
   },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | SimonHLee',
     default: 'Simon H Lee',
   },
-  description: 'My personal website, portfolio, and digital space',
+  description: 'My personal website and digital space',
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
