@@ -1,0 +1,25 @@
+export const metadata = {
+    title: 'Words',
+    summary: 'blog landing page',
+    alternates: {
+        canonical: '/blog'
+    },
+    id: 'blog-3'
+}
+import Link from 'next/link'
+import { ArrowLeftIcon } from 'lucide-react'
+
+<Link href="/" className="text-sm text-link hover:text-link-hover flex items-center gap-1 max-w-fit">
+  <ArrowLeftIcon size={14} />
+  to home page
+</Link>
+
+# Words
+
+**NOTE:** <br /> You can get ISO 8601 datetime by with the following and printing the result to the console. 
+(Make sure you remove quotes.)
+
+```ts
+const current = new Date().toISOString()
+```
+

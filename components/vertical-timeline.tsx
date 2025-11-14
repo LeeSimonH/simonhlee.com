@@ -9,8 +9,28 @@ import {
   TimelineSeparator,
   TimelineTitle,
 } from '@/components/ui/timeline'
-import { AsteriskIcon, ExternalLink } from 'lucide-react'
+import { AsteriskIcon, ArrowUpRight } from 'lucide-react'
 
+// function HoverUnderline({ link, text }: { link: string; text?: string }) {
+//   return (
+//     <a
+//       href={link}
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       className="group relative inline-block"
+//     >
+//       <span className="group hover:text-link-hover relative inline-flex shrink-1 items-center font-normal transition-colors duration-200 ease-in-out">
+//         {text ? text : link}
+//         <ArrowUpRight size={12} className="group-hover:text-link-hover" />
+//         <span className="bg-link-hover absolute bottom-[-1] left-0 block h-px w-full max-w-0 transition-all duration-200 group-hover:max-w-full"></span>
+//       </span>
+//     </a>
+//   )
+// }
+
+/**
+ * Todo: Make ease TimelineItem collapisible
+ */
 export default function ExperiencesTimeline(props: { experiences: WorkExperience[] }) {
   return (
     <div className="h-full w-full">
@@ -19,7 +39,7 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
           <TimelineItem
             key={job.id}
             step={idx + 1}
-            className={`text-primary max-w-[44ch] group-data-[orientation=vertical]/timeline:ms-10 ${idx === props.experiences.length - 1 ? 'mb-0' : 'mb-8'}`}
+            className={`text-primary group-data-[orientation=vertical]/timeline:ms-10 ${idx === props.experiences.length - 1 ? 'mb-0' : 'mb-8'}`}
           >
             <TimelineHeader>
               <TimelineSeparator className="border border-zinc-300 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-full group-data-[orientation=vertical]/timeline:translate-y-8 dark:border-zinc-600" />
@@ -52,16 +72,16 @@ export default function ExperiencesTimeline(props: { experiences: WorkExperience
                   rel="noopener noreferrer"
                   className="group relative inline-block"
                 >
-                  <span className="group text-secondary hover:text-link-hover relative inline-flex shrink-1 items-center gap-0.5 text-base leading-tight font-normal transition-colors duration-300 ease-in-out">
+                  <span className="group text-secondary group-hover:text-link-hover inline-flex shrink-1 items-center text-base leading-tight font-normal">
                     {job.company}
-                    <ExternalLink size={10} />
-                    <span className="bg-link-hover absolute bottom-0.5 left-0 block h-px w-full max-w-0 transition-all duration-300 group-hover:max-w-full"></span>
+                    <ArrowUpRight size={12} className="group-hover:text-link-hover" />
                   </span>
                 </a>
+                {/* <HoverUnderline text={job.company} link={job.link} /> */}
               </TimelineTitle>
 
               <TimelineIndicator className="flex size-8 items-center justify-center group-data-completed/timeline-item:border-0 group-data-[orientation=vertical]/timeline:-left-8">
-                <AsteriskIcon className="group-not-data-completed/timeline-item:hidden" />
+                <AsteriskIcon className="text-accent group-not-data-completed/timeline-item:hidden" />
               </TimelineIndicator>
             </TimelineHeader>
 

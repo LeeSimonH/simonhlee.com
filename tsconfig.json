@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -11,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
@@ -22,11 +26,24 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.mdx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts"],
-  "exclude": ["node_modules", "**/*-temp"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.mdx",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "next.config.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*-temp"
+  ],
   "mdx": {
     // Enable strict type checking in MDX files.
     "checkMdx": true

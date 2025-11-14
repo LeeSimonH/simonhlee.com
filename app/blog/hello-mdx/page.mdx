@@ -1,0 +1,61 @@
+export const metadata = {
+  title: 'Hello MDX in Next.js',
+  description: 'End-to-end example of a Next.js page written in MDX with metadata, imports, JSX, and code blocks.',
+  alternates: { canonical: '/blog/hello-mdx' },
+  openGraph: {
+    title: 'Hello MDX in Next.js',
+    description: 'Full raw MDX page example for the App Router',
+    type: 'article',
+  },
+}
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { Fragment } from 'react'
+
+
+// Optional local values usable in markup:
+export const publishedAt = '2025-08-14'
+
+# {metadata.title}
+
+## Links and inline JSX
+
+Jump back to the <Link href="/">homepage</Link>.  
+You can also render fragments:
+<Fragment>
+  <em>This line is rendered inside a React Fragment.</em>
+</Fragment>
+
+## Images
+
+<Image
+  src="/public/vercel.svg"
+  alt="Sample hero"
+  width={1200}
+  height={630}
+/>
+
+## Interactive components
+
+Counters or other client components can render within MDX.
+
+## Code blocks
+
+```ts
+// TypeScript example
+type Post = {
+  title: string
+  slug: string
+  publishedAt: string
+}
+
+export function getSummary(post: Post) {
+  return `${post.title} — ${post.publishedAt}`
+}
+```
+
+```bash
+# Shell example
+pnpm add @next/mdx
+```

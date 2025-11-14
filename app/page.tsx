@@ -3,11 +3,13 @@ import { ContactDialog } from '@/components/contact-dialog'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
 import ExperiencesTimeline from '@/components/vertical-timeline'
-import { ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { BLOG_POSTS as FALLBACK_BLOG_POSTS, SOCIAL_LINKS, WORK_EXPERIENCE } from './data'
+import { TextEffect } from '@/components/ui/text-effect'
+import { TextLoop } from '@/components/ui/text-loop'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -33,16 +35,18 @@ function MagneticSocialLink({ children, link }: { children: React.ReactNode; lin
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group bg-faint hover:bg-primary text-primary relative inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 font-mono text-sm tracking-tight decoration-transparent transition-all duration-300 hover:font-bold dark:not-hover:bg-zinc-800/60 dark:hover:bg-zinc-100"
+        className="group bg-faint hover:bg-accent text-primary dark:hover:bg-accent dark:not-hover:bg-faint relative inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 font-mono text-sm tracking-tight decoration-transparent transition-all duration-200 after:hidden after:bg-transparent hover:font-bold hover:no-underline hover:decoration-0 hover:after:bg-transparent"
       >
-        <span className="transition-color text-primary group-hover:text-on-primary dark:group-hover:text-on-primary z-10 inline-flex items-center gap-1 duration-200">
+        <span className="transition-color group-hover:text-accent-foreground dark:group-hover:text-accent-foreground z-10 inline-flex items-center gap-1 duration-200">
           {children}
-          <ExternalLink size={10} />
+          <ArrowUpRight size={12} className="group-hover:text-accent-foreground" />
         </span>
       </a>
     </Magnetic>
   )
 }
+
+const SELF_TITLES: string[] = ['Software Engineer', 'Urbanist', 'Creative']
 
 export default function Personal() {
   const [posts, setPosts] = useState<
@@ -70,59 +74,122 @@ export default function Personal() {
 
   return (
     <motion.main
-      className="my-12 flex max-w-full flex-col gap-24"
+      className="my-12 flex max-w-full flex-col gap-20"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
+      {/* #region MARK: Intro  */}
+      {/* <motion.div
+        className="flex flex-col"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+      >
+        <AnimatedTitles titles={SELF_TITLES} />
+      </motion.div> */}
+      {/* #endregion */}
+
       {/* MARK: About + Interests/Hobbies */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
         className="flex-1 space-y-8"
       >
+        {/* <h2 className="font-heading text-lg" aria-label="about">
+          About
+        </h2> */}
         <h2 className="sr-only hidden" aria-hidden="true" aria-label="about">
           About
         </h2>
 
-        <p>
-          Hi there! I'm Simon.
+        <div>
+          <span className="text-secondary font-light">Hi there! I'm </span>
+          <TextEffect
+            as="span"
+            preset="fade-in-blur"
+            per="char"
+            delay={0.2}
+            className="text-accent block text-2xl leading-snug font-bold tracking-tighter"
+          >
+            Simon H Lee
+          </TextEffect>
+          <div className="leading-tight">
+            {/* {'the '} */}
+            <TextLoop interval={3.5}>
+              {SELF_TITLES.map((nickname) => (
+                <TextEffect
+                  // as="span"
+                  preset="fade-in-blur"
+                  per="char"
+                  delay={0.3}
+                  speedSegment={0.6}
+                  key={nickname}
+                  className="text-primary font-medium"
+                >
+                  {nickname}
+                </TextEffect>
+              ))}
+            </TextLoop>
+          </div>
+        </div>
+
+        {/* <p>
+          Hi there! I'm Simon{'. '}
           <br />
           I like making things, and I like solving problems.
           <br />
           Bonus points if the problem requires making things.
-        </p>
+        </p> */}
         {/* MARK: Social Chips/Hovers/Cards */}
 
         <div id="hobbies">
-          <span>
+          <p className="wrap-pretty">
             These days I spend most of my free time{' '}
             <a
               href="https://instagram.com/crimpwimp"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-baseline gap-0.5"
+              className="inline-flex items-center"
             >
-              climbing <ExternalLink size={10} />
+              climbing <ArrowUpRight size={12} />
             </a>
-            ,<br />
-            but other things I enjoy include:
-          </span>
+            .
+          </p>
+
           <div>
+            Other things I enjoy in my free time:
             <ul className="mt-2 list-inside list-disc">
               <li>noodling around on the piano and guitar</li>
-              <li>$1 slices</li>
+
               <li>
                 <a
-                  href="https://vsco.co/simonhl/gallery"
-                  className="inline-flex items-baseline gap-0.5"
+                  href="https://music.apple.com/us/album/channel-orange/1440765580"
+                  target="_blank"
+                  className="group after:bg-chorange hover:after:bg-chorange-hover inline-flex items-center"
                 >
-                  snapping photos <ExternalLink size={10} />
-                </a>
+                  <em className="group-hover:text-chorange-hover text-chorange">Channel Orange</em>{' '}
+                  <ArrowUpRight size={12} className="group-hover:text-chorange" />
+                </a>{' '}
+                by Frank Ocean
               </li>
+
               <li>
-                <em>Channel Orange</em> by Frank Ocean
+                <a href="https://vsco.co/simonhl/gallery" className="inline-flex items-center">
+                  snapping photos <ArrowUpRight size={12} />
+                </a>{' '}
+                {/* <span className="text-sm italic"> (I just use my phone camera)</span> */}
               </li>
+
+              <li>exploring new places on foot or on bike</li>
+
+              <li>fresh and hot $1 slices</li>
             </ul>
           </div>
         </div>
@@ -181,7 +248,11 @@ export default function Personal() {
 
       {/* MARK: Blog */}
       <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
-        <h3 className="mb-4 text-lg font-medium">Blog</h3>
+        <h2 id="blog" className="font-heading mb-4 text-lg">
+          <Link href={'/blog'} className="no-underline">
+            Blog Posts
+          </Link>
+        </h2>
 
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
@@ -197,16 +268,16 @@ export default function Personal() {
               // Expanding Corner (experiment)
               <Link
                 key={post.uid}
-                className="group before:bg-primary before bg-background border-faint dark:border-faint relative z-0 mb-4 w-full overflow-hidden rounded-lg border px-4 py-3 decoration-transparent before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-out hover:decoration-transparent hover:before:scale-[150] hover:before:opacity-100 dark:bg-zinc-800/30"
+                className="group before:bg-accent before bg-background border-faint dark:border-faint relative z-0 mb-4 w-full overflow-hidden rounded-lg border px-4 py-3 decoration-transparent before:absolute before:top-0 before:left-0 before:z-[-1] before:h-2 before:w-2 before:rounded-full before:opacity-0 before:transition-all before:duration-[400ms] before:ease-in-out hover:before:scale-[150] hover:before:opacity-100 hover:after:bg-transparent"
                 href={post.link}
                 data-id={post.uid}
               >
                 <div className="group flex flex-col">
-                  <h4 className="group-hover:text-on-primary text-primary font-medium transition-colors duration-500 ease-out">
+                  <h3 className="group-hover:text-accent-foreground text-primary font-medium transition-colors duration-200 ease-out">
                     {post.title}
-                  </h4>
+                  </h3>
 
-                  <p className="text-secondary group-hover:text-on-primary mt-1 text-sm font-normal transition-colors delay-100 duration-500 ease-out group-hover:font-normal">
+                  <p className="text-secondary group-hover:text-accent-foreground mt-1 text-sm font-normal transition-colors delay-100 duration-200 ease-out">
                     {post.description}
                   </p>
                 </div>

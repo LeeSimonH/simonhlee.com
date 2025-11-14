@@ -203,7 +203,11 @@ function ContactFormInline() {
           )}
         />
 
-        <Button variant={'outline'} type="submit" className="hover:text-on-primary w-full">
+        <Button
+          variant="outline"
+          type="submit"
+          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground w-full transition-colors duration-150"
+        >
           <MailIcon /> Send message
         </Button>
       </form>
