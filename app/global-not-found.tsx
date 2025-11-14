@@ -3,15 +3,10 @@ import '@/app/globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { ArrowLeft } from 'lucide-react'
 import { ThemeProvider } from 'next-themes'
-import { Geist } from 'next/font/google'
 import Link from 'next/link'
+import { geist } from '@/lib/fonts'
 import { Footer } from './footer'
 import { Header } from './header'
-
-const geist = Geist({
-  variable: '--font-geist',
-  subsets: ['latin'],
-})
 
 interface NotFound404Props {
   'data-id'?: string

@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from 'next-themes'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { geist, geistMono } from '@/lib/fonts'
 import { Footer } from './footer'
 import './globals.css'
 import { Header } from './header'
@@ -32,25 +32,6 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
 }
-
-//#region MARK: Fonts
-/**
- * Default Monospaced
- */
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-/**
- * Default Sans-Serif
- */
-const geist = Geist({
-  variable: '--font-geist',
-  subsets: ['latin'],
-})
-//#endregion Fonts
 
 export default function RootLayout({
   children,

@@ -197,7 +197,7 @@ export default function Personal() {
                   <br />
                   Just want to chat over coffee?{' '}
                   <a
-                    href="simonlee1125@gmail.com"
+                    href="mailto:simonlee1125@gmail.com"
                     target="_blank"
                     className="group after:bg-chorange hover:after:bg-chorange-hover hover:text-chorange-hover text-chorange inline-flex items-center"
                   >

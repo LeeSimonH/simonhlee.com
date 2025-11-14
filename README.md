@@ -15,7 +15,7 @@ Setup
 
 ```bash
 # set tool versions
-corepack enable && corepack use pnpm@10.14.0 && nvm use 24.1
+corepack enable && corepack use pnpm@10.16.0 && nvm use 24.1
 
 # install and run
 pnpm install

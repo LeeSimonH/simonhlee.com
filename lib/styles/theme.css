@@ -33,7 +33,7 @@
 
   --color-accent: var(--color-chorange);
   --color-accent-hover: var(--color-chorange-hover);
-  --color-accent-foreground: var(--color-background);
+  --color-accent-foreground: var(--color-body-primary);
 
   --color-error: var(--color-red-500);
   --color-destructive: var(--color-red-500);

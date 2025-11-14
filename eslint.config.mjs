@@ -29,7 +29,7 @@ const mdxCodeBlockConfigs = compat.config({
   extends: ['plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
 })
 mdxCodeBlockConfigs.forEach((config) => {
-  config.files = ['**/.{md,mdx}/.{js,jsx,ts,tsx}']
+  config.files = ['**/*.{md,mdx}/**/*.{js,jsx,ts,tsx}']
 })
 
 const eslintConfig = [
