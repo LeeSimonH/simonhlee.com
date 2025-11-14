@@ -9,31 +9,11 @@ export type WorkExperience = {
   highlights?: string[]
 }
 
-type Project = {
-  name: string
-  description: string
-  link: string
-  video?: string
-  image?: string
-  id: string
-}
-
 type SocialLink = {
   label: string
   link: string
 }
 
-export const PROJECTS: Project[] = [
-  {
-    name: 'svve11',
-    description: 'Open source UI library of accessible Svelte components',
-    image: '/img/projects/svve11-logo-square-purple.png',
-    link: 'https://svve11-five.vercel.app/',
-    id: 'project1',
-  },
-]
-
-// Todo: get from Github gist?
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     id: 'janus-1',
@@ -90,9 +70,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     link: 'https://www.instagram.com/crimpwimp',
   },
 ]
-
-export const EMAIL = 'simonlee1125@gmail.com'
-export const BASE_URL = 'https://simonhlee.vercel.app'
 
 //#region MARK: Blog-related
 type BlogPost = {

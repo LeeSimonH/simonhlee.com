@@ -45,7 +45,7 @@ function MagneticSocialLink({ children, link }: { children: React.ReactNode; lin
   )
 }
 
-const SELF_TITLES: string[] = ['Software Engineer', 'Urbanist', 'Creative']
+const SELF_TITLES: string[] = ['Software Engineer', 'Creative', 'Pebble Wrestler', 'Urbanist']
 
 export default function Personal() {
   const [posts, setPosts] = useState<
@@ -217,16 +217,15 @@ export default function Personal() {
         <ExperiencesTimeline experiences={WORK_EXPERIENCE} />
       </motion.section>
 
-      {/* TODO: Selected Projects */}
-
       {/* MARK: Blog */}
       <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
         <h2 id="blog" className="font-heading mb-4 text-lg">
           <Link href={'/blog'} className="no-underline">
-            Blog Posts
+            Blog
           </Link>
         </h2>
 
+        <em className="text-secondary">coming soon...</em>
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover

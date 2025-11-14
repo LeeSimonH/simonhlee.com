@@ -1,5 +1,5 @@
 'use client'
-import { MapPinIcon, CopyrightIcon } from 'lucide-react'
+import { MapPinIcon } from 'lucide-react'
 import ThemeSwitch from '@/components/theme-switch'
 
 export function Footer() {
@@ -9,16 +9,6 @@ export function Footer() {
         <div className="absolute right-0 text-xs">
           <ThemeSwitch />
         </div>
-
-        <a
-          href="https://github.com/leesimonh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-secondary flex items-center justify-start gap-1 decoration-transparent after:-bottom-1"
-        >
-          <CopyrightIcon size={12} />
-          2025 @LeeSimonH
-        </a>
 
         <div className="flex items-center justify-start gap-1 decoration-transparent">
           <MapPinIcon size={12} />
