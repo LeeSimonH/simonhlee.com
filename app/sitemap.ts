@@ -2,7 +2,6 @@ import { promises as fs } from 'fs'
 import path from 'path'
 
 const SITE_URL = 'https://simonhlee.vercel.app'
-// const SITE_URL = 'http://localhost:3000'
 
 async function getNoteSlugs(dir: string) {
   const entries = await fs.readdir(dir, {

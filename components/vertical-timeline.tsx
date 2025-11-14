@@ -11,23 +11,6 @@ import {
 } from '@/components/ui/timeline'
 import { AsteriskIcon, ArrowUpRight } from 'lucide-react'
 
-// function HoverUnderline({ link, text }: { link: string; text?: string }) {
-//   return (
-//     <a
-//       href={link}
-//       target="_blank"
-//       rel="noopener noreferrer"
-//       className="group relative inline-block"
-//     >
-//       <span className="group hover:text-link-hover relative inline-flex shrink-1 items-center font-normal transition-colors duration-200 ease-in-out">
-//         {text ? text : link}
-//         <ArrowUpRight size={12} className="group-hover:text-link-hover" />
-//         <span className="bg-link-hover absolute bottom-[-1] left-0 block h-px w-full max-w-0 transition-all duration-200 group-hover:max-w-full"></span>
-//       </span>
-//     </a>
-//   )
-// }
-
 /**
  * Todo: Make ease TimelineItem collapisible
  */
