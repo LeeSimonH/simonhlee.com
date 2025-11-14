@@ -70,6 +70,7 @@
   ::selection {
     color: var(--color-background);
     background: var(--color-primary);
+    /* background: var(--color-highlight); */
   }
 
   code,
@@ -97,18 +98,56 @@
   }
 
   :where(a, .link) {
-    @apply text-link underline decoration-zinc-500 underline-offset-2 transition-colors duration-200 ease-in-out;
+    @apply relative decoration-transparent decoration-0 transition-all duration-150 ease-in-out;
+    /* @apply decoration-accent/40 relative underline decoration-0 underline-offset-2 transition-all duration-150 ease-in-out; */
 
-    &:hover {
-      @apply text-link-hover decoration-link-hover;
+    &:is(:hover, :focus) {
+      @apply text-link-hover;
+    }
+
+    &:after {
+      content: '';
+      @apply absolute bottom-0.5 left-0 block h-0 w-0 bg-transparent transition-all duration-300;
+    }
+
+    &:is(:hover, :focus):after {
+      @apply bg-link h-[1.5px] w-full;
     }
   }
 
   :where(.btn-link) {
-    @apply text-link font-medium transition-colors duration-200 ease-in-out;
+    @apply text-link transition-colors duration-150 ease-in-out;
 
     &:hover {
       @apply text-link-hover;
     }
+  }
+
+  :where(a, .link, .btn-link) svg {
+    @apply text-muted-strong transition-colors duration-150 ease-in-out;
+  }
+
+  :where(a, .link, .btn-link):hover svg {
+    @apply text-primary;
+  }
+
+  /* h1,
+  h2,
+  h3,
+  h4 {
+    a::after {
+      @apply hidden;
+    }
+    &:is(:hover, :focus) a::after {
+      @apply h-0 bg-transparent;
+    }
+  } */
+
+  .aspect-4-5 {
+    aspect-ratio: 4 / 5;
+  }
+
+  .wrap-pretty {
+    text-wrap: pretty;
   }
 }

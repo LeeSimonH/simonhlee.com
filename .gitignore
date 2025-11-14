@@ -49,3 +49,17 @@ next-env.d.ts
 
 # Local working files
 **/*-temp
+.trae/.ignore
+.gitignore
+.gitignore
+.dropstone/mcp.json
+.dropstone/memory/dropstone_memory.db
+.dropstone/memory/workspaces/simonhlee_com_4b8f53c21f0ef979/sql_memory/dropstone_memory.db
+.dropstone/monitoring/metrics.json
+.gitignore
+.kiro/settings/mcp.json
+.kiro/specs/blog-discoverability/design.md
+.kiro/specs/blog-discoverability/requirements.md
+.kiro/specs/blog-discoverability/tasks.md
+.kiro/steering/AGENTS.md
+.kiro/steering/derived-cursor-rules.md

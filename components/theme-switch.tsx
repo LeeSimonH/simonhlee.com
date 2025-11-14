@@ -1,68 +1,98 @@
 'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { MonitorIcon, MoonStarIcon, SunIcon } from 'lucide-react'
+import { motion } from 'motion/react'
 import { useTheme } from 'next-themes'
+import type { JSX } from 'react'
 import { useEffect, useState } from 'react'
 
-const THEMES_OPTIONS = [
+import { cn } from '@/lib/utils'
+
+function ThemeOption({
+  icon,
+  value,
+  isActive,
+  onClick,
+}: {
+  icon: JSX.Element
+  value: string
+  isActive?: boolean
+  onClick: (value: string) => void
+}) {
+  return (
+    <button
+      className={cn(
+        'relative flex size-8 cursor-default items-center justify-center rounded-full transition-all [&_svg]:size-4',
+        isActive
+          ? 'text-primary dark:text-primary'
+          : 'text-muted hover:text-primary dark:text-muted dark:hover:text-primary'
+      )}
+      role="radio"
+      aria-checked={isActive}
+      aria-label={`Switch to ${value} theme`}
+      onClick={() => onClick(value)}
+    >
+      {icon}
+
+      {isActive && (
+        <motion.div
+          layoutId="theme-option"
+          transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+          className="border-muted/30 dark:border-muted absolute inset-0 rounded-full border"
+          // className="absolute inset-0 rounded-full hover:bg-muted/15 dark:hover:bg-muted/10"
+        />
+      )}
+    </button>
+  )
+}
+
+const THEME_OPTIONS = [
   {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-3.5 w-3.5" />,
+    icon: <MonitorIcon />,
+    value: 'system',
   },
   {
-    label: 'Light',
-    id: 'light',
-    icon: <SunIcon className="h-3.5 w-3.5" />,
+    icon: <SunIcon />,
+    value: 'light',
   },
   {
-    label: 'Dark',
-    id: 'dark',
-    icon: <MoonIcon className="h-3.5 w-3.5" />,
+    icon: <MoonStarIcon />,
+    value: 'dark',
   },
 ]
 
-export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
+function ThemeSwitch() {
   const { theme, setTheme } = useTheme()
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    setIsMounted(true)
   }, [])
 
-  if (!mounted) {
-    return null
+  if (!isMounted) {
+    return <div className="flex h-8 w-24" />
   }
 
   return (
-    <AnimatedBackground
-      className="group bg-faint/80 dark:bg-faint z-auto rounded-lg"
-      defaultValue={theme}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
-      enableHover={false}
-      onValueChangeAction={(id) => {
-        if (!!id) {
-          setTheme(id)
-        }
-      }}
+    <motion.div
+      role="radiogroup"
+      key={String(isMounted)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      // className="bg-faint/40 dark:bg-background inline-flex items-center overflow-hidden rounded-full"
+      className="bg-background ring-muted/30 dark:bg-background dark:ring-faint inline-flex items-center overflow-hidden rounded-full ring-1 ring-inset"
     >
-      {THEMES_OPTIONS.map((t) => {
-        return (
-          <button
-            key={t.id}
-            className={`hover:text-primary-hover dark:data-[checked=true]:text-accent mx-0.5 inline-flex items-center justify-center rounded-full p-1 transition-all duration-300 focus-visible:outline-2 data-[checked=true]:text-black ${theme === t.id ? 'text-primary' : 'text-muted'}`}
-            type="button"
-            aria-label={`Switch to ${t.label} theme`}
-            data-id={t.id}
-          >
-            {t.icon}
-          </button>
-        )
-      })}
-    </AnimatedBackground>
+      {THEME_OPTIONS.map((option) => (
+        <ThemeOption
+          key={option.value}
+          icon={option.icon}
+          value={option.value}
+          isActive={theme === option.value}
+          onClick={setTheme}
+        />
+      ))}
+    </motion.div>
   )
 }
+
+export default ThemeSwitch

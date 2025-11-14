@@ -4,11 +4,13 @@ import createMDX from '@next/mdx'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  turbopack: {},
-  // Note: Using the Rust compiler means we cannot use
-  // rehype or remark plugins. If you need them, remove
-  // the `experimental.mdxRs` flag.
+  turbopack: {
+    root: __dirname,
+  },
   experimental: {
+    globalNotFound: true,
+    // Note: Using the Rust compiler means we cannot use rehype or remark plugins.
+    // If you need them, remove the `experimental.mdxRs` flag.
     mdxRs: true,
   },
 }

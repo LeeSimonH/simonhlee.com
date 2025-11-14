@@ -53,7 +53,10 @@ export function ContactDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <Button variant="outline" className="border-muted hover:text-on-primary">
+          <Button
+            variant="outline"
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-colors duration-150"
+          >
             <MailIcon />
             Leave a message
           </Button>
@@ -69,7 +72,7 @@ export function ContactDialog({
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="ghost" className="hover:text-on-primary">
+            <Button variant="ghost" className="hover:text-accent-foreground">
               Close
             </Button>
           </DialogClose>
