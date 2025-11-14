@@ -1,5 +1,5 @@
 'use client'
-import { MapPinIcon, CopyrightIcon } from 'lucide-react'
+import { MapPinIcon } from 'lucide-react'
 import ThemeSwitch from '@/components/theme-switch'
 
 export function Footer() {
