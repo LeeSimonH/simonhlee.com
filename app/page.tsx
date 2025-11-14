@@ -1,5 +1,4 @@
 'use client'
-import { ContactDialog } from '@/components/contact-dialog'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
 import ExperiencesTimeline from '@/components/vertical-timeline'
@@ -74,37 +73,17 @@ export default function Personal() {
 
   return (
     <motion.main
-      className="my-12 flex max-w-full flex-col gap-20"
+      className="my-12 mt-0 flex max-w-full flex-col gap-20"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
-      {/* #region MARK: Intro  */}
-      {/* <motion.div
-        className="flex flex-col"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.15,
-            },
-          },
-        }}
-      >
-        <AnimatedTitles titles={SELF_TITLES} />
-      </motion.div> */}
-      {/* #endregion */}
-
       {/* MARK: About + Interests/Hobbies */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
         className="flex-1 space-y-8"
       >
-        {/* <h2 className="font-heading text-lg" aria-label="about">
-          About
-        </h2> */}
         <h2 className="sr-only hidden" aria-hidden="true" aria-label="about">
           About
         </h2>
@@ -121,11 +100,9 @@ export default function Personal() {
             Simon H Lee
           </TextEffect>
           <div className="leading-tight">
-            {/* {'the '} */}
             <TextLoop interval={3.5}>
               {SELF_TITLES.map((nickname) => (
                 <TextEffect
-                  // as="span"
                   preset="fade-in-blur"
                   per="char"
                   delay={0.3}
@@ -140,15 +117,6 @@ export default function Personal() {
           </div>
         </div>
 
-        {/* <p>
-          Hi there! I'm Simon{'. '}
-          <br />
-          I like making things, and I like solving problems.
-          <br />
-          Bonus points if the problem requires making things.
-        </p> */}
-        {/* MARK: Social Chips/Hovers/Cards */}
-
         <div id="hobbies">
           <p className="wrap-pretty">
             These days I spend most of my free time{' '}
@@ -156,9 +124,9 @@ export default function Personal() {
               href="https://instagram.com/crimpwimp"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center"
+              className="group after:bg-chorange hover:after:bg-chorange-hover hover:text-chorange-hover text-chorange inline-flex items-center"
             >
-              climbing <ArrowUpRight size={12} />
+              climbing <ArrowUpRight size={12} className="group-hover:text-chorange" />
             </a>
             .
           </p>
@@ -181,10 +149,12 @@ export default function Personal() {
               </li>
 
               <li>
-                <a href="https://vsco.co/simonhl/gallery" className="inline-flex items-center">
-                  snapping photos <ArrowUpRight size={12} />
+                <a
+                  href="https://vsco.co/simonhl/gallery"
+                  className="group after:bg-chorange hover:after:bg-chorange-hover hover:text-chorange-hover text-chorange inline-flex items-center"
+                >
+                  snapping photos <ArrowUpRight size={12} className="group-hover:text-chorange" />
                 </a>{' '}
-                {/* <span className="text-sm italic"> (I just use my phone camera)</span> */}
               </li>
 
               <li>exploring new places on foot or on bike</li>
@@ -225,22 +195,25 @@ export default function Personal() {
                 <p>
                   Want to work with me? Have any questions for me?
                   <br />
-                  Just want to chat over coffee? Get in touch!
+                  Just want to chat over coffee?{' '}
+                  <a
+                    href="simonlee1125@gmail.com"
+                    target="_blank"
+                    className="group after:bg-chorange hover:after:bg-chorange-hover hover:text-chorange-hover text-chorange inline-flex items-center"
+                  >
+                    Let's get in touch!
+                    <ArrowUpRight size={12} className="group-hover:text-chorange" />
+                  </a>{' '}
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Contact dialog trigger */}
-          <div>
-            <ContactDialog />
           </div>
         </div>
       </motion.section>
 
       {/* MARK: Work Experience */}
       <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
-        <h2 className="font-heading mb-4 text-lg">Experience</h2>
+        <h2 className="font-heading mb-4 text-lg">Experience </h2>
         <ExperiencesTimeline experiences={WORK_EXPERIENCE} />
       </motion.section>
 

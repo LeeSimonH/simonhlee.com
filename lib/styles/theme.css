@@ -65,8 +65,8 @@
 
   /* --color-accent: var(--color-zinc-100); */
   /* --color-accent-hover: var(--color-zinc-200); */
-  --color-accent: var(--color-teal-600);
-  --color-accent-hover: var(--color-teal-500);
+  --color-accent: var(--color-chorange);
+  --color-accent-hover: var(--color-chorange-hover);
   --color-accent-foreground: var(--color-body-primary);
 
   --color-error: var(--color-red-500);
