@@ -58,6 +58,13 @@
       "optional": true
     }
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "engines": {
     "node": ">=22",
     "pnpm": ">=10"
