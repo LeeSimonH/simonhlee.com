@@ -195,7 +195,8 @@ export default function Personal() {
                 <p>
                   Want to work with me? Have any questions for me?
                   <br />
-                  Just want to chat over coffee?{' '}
+                  Just want to chat over coffee?
+                  <br />
                   <a
                     href="mailto:simonlee1125@gmail.com"
                     target="_blank"
@@ -203,7 +204,7 @@ export default function Personal() {
                   >
                     Let's get in touch!
                     <ArrowUpRight size={12} className="group-hover:text-chorange" />
-                  </a>{' '}
+                  </a>
                 </p>
               </div>
             </div>
