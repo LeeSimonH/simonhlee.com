@@ -34,7 +34,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Software Engineer 2',
     subtitle: 'Document Processing',
     start: '11/2022',
-    end: '04/2024',
+    end: '01/2024',
     link: 'https://www.janus-ai.com/',
     highlights: [
       'Aided in multiple efforts to scale the document processing pipeline – including a major database split and deprecating and replacing legacy data models – ultimately resulting in a 10-fold increase in capacity',
