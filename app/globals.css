@@ -4,6 +4,7 @@
 @import '../lib/styles/theme.css' layer(base);
 
 @import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@import '../lib/styles/prose.css' layer(utilities);
 
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));

@@ -1,0 +1,21 @@
+/* Prose-specific styles for blog content */
+/* Overrides Tailwind Typography defaults to match site-wide link styles */
+
+@layer utilities {
+  .prose a {
+    @apply relative decoration-transparent decoration-0 no-underline transition-all duration-150 ease-in-out;
+
+    &:is(:hover, :focus) {
+      @apply text-link-hover;
+    }
+
+    &:after {
+      content: '';
+      @apply absolute bottom-0.5 left-0 block h-0 w-0 bg-transparent transition-all duration-300;
+    }
+
+    &:is(:hover, :focus):after {
+      @apply bg-link h-[1.5px] w-full;
+    }
+  }
+}
